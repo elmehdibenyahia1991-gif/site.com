@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل المدن السياحية - دفع وتحميل</title>
+<style>
+  body { font-family: Tahoma, sans-serif; background: #f5f7fb; direction: rtl; margin: 0; padding: 0; }
+  header { background: #007bff; color: white; text-align: center; padding: 20px; }
+  .wrap { max-width: 1200px; margin: 20px auto; padding: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 15px; }
+  .card { background: white; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; }
+  .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+  .price { font-weight: bold; margin: 10px 0; }
+  .download-link { display: none; margin-top: 10px; padding: 8px 12px; border-radius: 8px; background: #28a745; color: white; text-decoration: none; }
+</style>
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+</head>
+<body>
+
+<header>
+  <h1>دليل المدن السياحية المغربية</h1>
+  <p>اختر المدينة، ادفع 3 دولار، وحمل الملف مباشرة</p>
+</header>
+
+<div class="wrap">
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+const cities = [
+  {slug: "casablanca", ar: "الدار البيضاء", en: "Casablanca", fr: "Casablanca", price: "3.00"},
+  {slug: "marrakech", ar: "مراكش", en: "Marrakech", fr: "Marrakech", price: "3.00"},
+  {slug: "rabat", ar: "الرباط", en: "Rabat", fr: "Rabat", price: "3.00"},
+  {slug: "fes", ar: "فاس", en: "Fes", fr: "Fès", price: "3.00"},
+  {slug: "tangier", ar: "طنجة", en: "Tangier", fr: "Tanger", price: "3.00"},
+  {slug: "agadir", ar: "أغادير", en: "Agadir", fr: "Agadir", price: "3.00"},
+  {slug: "essaouira", ar: "الصويرة", en: "Essaouira", fr: "Essaouira", price: "3.00"},
+  {slug: "chefchaouen", ar: "شفشاون", en: "Chefchaouen", fr: "Chefchaouen", price: "3.00"}
+]; // يمكنك إضافة باقي المدن بنفس الطريقة
+
+const grid = document.getElementById('grid');
+
+cities.forEach(city => {
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  const img = document.createElement('img');
+  img.src = 'https://via.placeholder.com/600x320?text=' + encodeURIComponent(city.en);
+  img.alt = city.en;
+  card.appendChild(img);
+
+  const hAr = document.createElement('h2'); hAr.textContent = city.ar; card.appendChild(hAr);
+  const hEn = document.createElement('h3'); hEn.textContent = city.en; card.appendChild(hEn);
+  const hFr = document.createElement('h3'); hFr.textContent = city.fr; card.appendChild(hFr);
+
+  const p = document.createElement('p');
+  p.className = 'price';
+  p.textContent = 'السعر: $' + city.price;
+  card.appendChild(p);
+
+  const container = document.createElement('div');
+  container.id = 'paypal-' + city.slug;
+  card.appendChild(container);
+
+  const dl = document.createElement('a');
+  dl.href = 'pdfs/' + city.slug + '.pdf';
+  dl.className = 'download-link';
+  dl.textContent = 'تحميل الملف بعد الدفع';
+  dl.target='_blank';
+  card.appendChild(dl);
+
+  grid.appendChild(card);
+
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({ purchase_units: [{ amount: { value: city.price } }] });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        dl.style.display = 'inline-block';
+        alert('تم الدفع بنجاح! انقر على "تحميل الملف" للتحميل.');
+      });
+    }
+  }).render('#' + container.id);
+});
+</script>
+
+</body>
+</html>
