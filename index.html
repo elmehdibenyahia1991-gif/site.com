@@ -3,36 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DigitalNest | Premium Digital Products</title>
-  <meta name="description" content="Buy premium digital products with instant downloads, secure checkout, and a smooth shopping experience." />
+  <title>AI Lead Engine | AI Content & Lead Generation for Coaches and Creators</title>
+  <meta name="description" content="AI Lead Engine helps coaches, consultants, and content creators turn content into clients with AI-powered content systems and lead generation strategies." />
   <style>
     :root {
-      --bg: #f4f7fb;
+      --bg: #f5f7ff;
       --surface: #ffffff;
-      --surface-2: #eef2ff;
-      --text: #101828;
-      --muted: #475467;
-      --primary: #4f46e5;
-      --primary-strong: #3730a3;
-      --accent: #06b6d4;
-      --success: #047857;
-      --danger: #b42318;
-      --border: #d0d5dd;
-      --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
-      --radius: 16px;
+      --primary: #5b5cf6;
+      --primary-dark: #3c3dd3;
+      --accent: #00b8d9;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #dbe1ee;
+      --shadow: 0 18px 40px rgba(17, 24, 39, 0.08);
+      --radius: 18px;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Inter", "Segoe UI", Roboto, sans-serif;
       color: var(--text);
-      background: linear-gradient(180deg, #e0e7ff 0%, var(--bg) 20%);
-      line-height: 1.5;
+      line-height: 1.55;
+      background: radial-gradient(circle at top right, #e7ecff 0%, var(--bg) 35%, #f9fbff 100%);
     }
-
-    a { color: inherit; text-decoration: none; }
 
     .container {
       width: min(1120px, 92vw);
@@ -43,682 +38,358 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.9);
       border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
     }
 
     .nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      align-items: center;
       padding: 0.9rem 0;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
     .logo {
       font-weight: 800;
+      font-size: 1.06rem;
       letter-spacing: 0.2px;
-      color: var(--primary-strong);
+      color: var(--primary-dark);
     }
 
     .nav-links {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
+      gap: 0.9rem;
+      font-weight: 500;
       color: var(--muted);
-      font-size: 0.95rem;
     }
+
+    a { color: inherit; text-decoration: none; }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 1.5rem;
-      align-items: center;
-      padding: 2.4rem 0 1.8rem;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1rem;
+      padding: 3rem 0 2rem;
+      align-items: stretch;
     }
 
-    .hero-card {
+    .hero-main, .hero-side,
+    .panel, .pricing-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow);
       border-radius: var(--radius);
-      padding: 1.7rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 2rem;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      border: 1px solid #c7d2fe;
-      background: #eef2ff;
-      color: #4338ca;
       border-radius: 999px;
-      padding: 0.35rem 0.7rem;
-      font-size: 0.82rem;
+      background: #eef1ff;
+      color: var(--primary-dark);
+      border: 1px solid #d7defd;
+      padding: 0.35rem 0.75rem;
       font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 0.9rem;
     }
 
-    h1, h2, h3 { margin: 0 0 0.8rem; line-height: 1.2; }
-
-    h1 { font-size: clamp(1.75rem, 4vw, 2.7rem); }
-
-    .lead { color: var(--muted); margin-bottom: 1rem; }
-
-    .cta-row {
-      display: flex;
-      gap: 0.7rem;
-      flex-wrap: wrap;
+    h1, h2, h3 {
+      margin: 0 0 0.75rem;
+      line-height: 1.2;
     }
 
-    button, .btn {
-      border: 0;
+    h1 { font-size: clamp(2rem, 4.7vw, 3.2rem); }
+
+    .lead {
+      color: var(--muted);
+      margin: 0 0 1.2rem;
+      max-width: 62ch;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
       border-radius: 12px;
-      padding: 0.72rem 1.05rem;
+      cursor: pointer;
       font: inherit;
       font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s ease;
+      padding: 0.82rem 1.15rem;
+      transition: transform 0.15s ease, background 0.2s ease;
     }
 
     .btn-primary {
       color: #fff;
-      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     }
 
     .btn-primary:hover { transform: translateY(-1px); }
 
-    .btn-outline {
-      border: 1px solid #c7d2fe;
-      color: #3730a3;
-      background: #fff;
-    }
-
     .hero-side {
-      background: linear-gradient(160deg, #1e1b4b, #4338ca);
-      border-radius: var(--radius);
+      background: linear-gradient(145deg, #1f2b66, #5b5cf6 60%, #2ea7f1);
       color: #fff;
-      padding: 1.4rem;
-      box-shadow: var(--shadow);
+      padding: 1.5rem;
     }
 
-    .hero-points { margin: 0; padding-left: 1.2rem; }
-    .hero-points li { margin-bottom: 0.55rem; }
+    .hero-side ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .hero-side li { margin-bottom: 0.65rem; }
 
     .section {
-      padding: 1.2rem 0 0.8rem;
+      padding: 1.3rem 0;
     }
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.9rem;
-      flex-wrap: wrap;
+    .section-header {
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.9rem;
     }
 
     .panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
       padding: 1rem;
     }
 
-    .controls {
+    .work-steps {
       display: grid;
-      grid-template-columns: 1.8fr 1fr;
-      gap: 0.8rem;
-      margin-top: 0.7rem;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 0.9rem;
     }
 
-    input, select, textarea {
+    .step-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #eaf1ff;
+      color: var(--primary-dark);
+      display: grid;
+      place-content: center;
+      font-weight: 800;
+      margin-bottom: 0.45rem;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.95rem;
+    }
+
+    .pricing-card {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .price {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .muted { color: var(--muted); }
+
+    .paypal-form {
+      margin-top: auto;
+    }
+
+    .paypal-btn {
+      width: 100%;
+      margin-top: 0.65rem;
+      color: #111;
+      background: linear-gradient(135deg, #ffc439, #ffb347);
+      font-weight: 800;
+      border: 1px solid #f2c465;
+    }
+
+    .client-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(220px, 1fr));
+      gap: 0.75rem;
+    }
+
+    input, textarea {
       width: 100%;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.62rem 0.75rem;
+      border-radius: 11px;
+      padding: 0.75rem;
       font: inherit;
       background: #fff;
     }
 
-    .products {
-      margin-top: 1rem;
-      display: grid;
-      gap: 0.95rem;
-      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      grid-column: 1 / -1;
     }
 
-    .card {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
+    .full { grid-column: 1 / -1; }
 
-    .thumb {
-      height: 145px;
-      display: grid;
-      place-content: center;
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.4rem;
-      letter-spacing: 0.4px;
-    }
-
-    .card-body {
-      padding: 0.85rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex-grow: 1;
-    }
-
-    .meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    .price {
-      font-size: 1.08rem;
-      font-weight: 800;
-      color: var(--primary-strong);
-    }
-
-    .muted { color: var(--muted); font-size: 0.92rem; }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 0.85rem;
-    }
-
-    .faq-item details {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.7rem;
-      background: #fff;
-    }
-
-    .faq-item summary { cursor: pointer; font-weight: 700; }
-
-    .footer {
-      padding: 2rem 0;
-      color: var(--muted);
-      font-size: 0.9rem;
+    footer {
+      margin-top: 1.7rem;
+      border-top: 1px solid var(--border);
+      padding: 1.4rem 0 2rem;
       text-align: center;
+      color: var(--muted);
     }
 
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      z-index: 80;
-    }
-
-    .modal.show { display: flex; }
-
-    .modal-card {
-      width: min(720px, 100%);
-      background: #fff;
-      border-radius: 18px;
-      padding: 1rem;
-      box-shadow: var(--shadow);
-      max-height: 95vh;
-      overflow: auto;
-    }
-
-    .checkout-grid {
-      display: grid;
-      gap: 0.8rem;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .status {
-      margin-top: 0.6rem;
-      border-radius: 10px;
-      padding: 0.55rem 0.7rem;
-      font-size: 0.92rem;
-      display: none;
-    }
-
-    .status.ok { display: block; background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
-    .status.err { display: block; background: #fee2e2; color: #7f1d1d; border: 1px solid #fecaca; }
-
-    .downloads {
-      border: 1px dashed #a5b4fc;
-      background: #eef2ff;
-      border-radius: 10px;
-      padding: 0.7rem;
-      margin-top: 0.75rem;
-      display: none;
-    }
-
-    .downloads.show { display: block; }
-
-    .lock {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 0.7rem;
-      font-size: 0.9rem;
-      color: #334155;
-    }
-
-    @media (max-width: 840px) {
-      .hero { grid-template-columns: 1fr; }
-      .controls { grid-template-columns: 1fr; }
-      .checkout-grid { grid-template-columns: 1fr; }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; padding-top: 2rem; }
+      .client-form { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
-      <div class="logo">DigitalNest</div>
+      <div class="logo">AI Lead Engine</div>
       <nav class="nav-links">
-        <a href="#store">Store</a>
-        <a href="#about">About</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+        <a href="#services">Services</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#client-form">Client Form</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero">
-      <article class="hero-card">
-        <span class="badge">🚀 Instant Access • Secure Checkout</span>
-        <h1>Premium Digital Products – Instant Download</h1>
-        <p class="lead">Scale your personal brand and business with high-quality eBooks, templates, planners, and design resources delivered immediately after payment.</p>
-        <div class="cta-row">
-          <a href="#store" class="btn btn-primary">Shop Now</a>
-          <a href="#featured" class="btn btn-outline">View Featured Products</a>
-        </div>
+    <section class="hero" id="home">
+      <article class="hero-main">
+        <span class="badge">AI Lead Generation for Global Entrepreneurs</span>
+        <h1>Turn Your Content Into Clients With AI</h1>
+        <p class="lead">We help coaches, consultants, and content creators generate leads and clients using AI-powered content systems.</p>
+        <a class="btn btn-primary" href="#pricing">Get Your AI Lead System</a>
       </article>
       <aside class="hero-side">
-        <h3>Why customers choose DigitalNest</h3>
-        <ul class="hero-points">
-          <li>Instant downloads after successful payment approval.</li>
-          <li>Secure PayPal checkout and tamper-resistant download links.</li>
-          <li>Mobile-first experience with fast-loading pages.</li>
-          <li>Professional product assets built for creators and businesses.</li>
+        <h3>Built for conversion and growth</h3>
+        <ul>
+          <li>Clear offer positioning for your niche.</li>
+          <li>AI-driven prompts and systems tailored to your goals.</li>
+          <li>Simple packages with instant PayPal checkout.</li>
+          <li>Mobile-first layout for global audiences.</li>
         </ul>
       </aside>
     </section>
 
-    <section id="featured" class="section">
-      <div class="section-title">
-        <h2>Featured Products</h2>
+    <section class="section" id="services">
+      <div class="section-header">
+        <h2>Services</h2>
       </div>
-      <div id="featuredProducts" class="products"></div>
-    </section>
-
-    <section id="store" class="section panel">
-      <div class="section-title">
-        <h2>Product Store</h2>
-        <small class="muted">Browse eBooks, planners, Canva templates, guides, and design packs.</small>
+      <div class="grid-4">
+        <article class="panel"><h3>AI Content Strategy</h3><p class="muted">Get a strategic content roadmap aligned with your audience and offer.</p></article>
+        <article class="panel"><h3>Lead Generation Content Ideas</h3><p class="muted">Receive practical post ideas designed to attract qualified leads daily.</p></article>
+        <article class="panel"><h3>AI Prompts For Viral Content</h3><p class="muted">Use proven prompts to create hooks, storytelling, and high-performing content faster.</p></article>
+        <article class="panel"><h3>Weekly Content System</h3><p class="muted">Follow a repeatable weekly plan that keeps your pipeline active and consistent.</p></article>
       </div>
-      <div class="controls">
-        <input id="search" type="search" placeholder="Search products..." aria-label="Search products" />
-        <select id="categoryFilter" aria-label="Product category">
-          <option value="all">All Categories</option>
-          <option value="eBooks">eBooks</option>
-          <option value="Printable Planners">Printable Planners</option>
-          <option value="Canva Templates">Canva Templates</option>
-          <option value="Design Resources">Design Resources</option>
-          <option value="Digital Guides">Digital Guides</option>
-        </select>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="section-header">
+        <h2>How It Works</h2>
       </div>
-      <div id="allProducts" class="products"></div>
-      <p id="emptyState" class="muted" style="display:none; margin-top:0.7rem;">No products match your search right now.</p>
+      <div class="work-steps">
+        <article class="panel"><div class="step-number">1</div><h3>Fill a short form about your business</h3></article>
+        <article class="panel"><div class="step-number">2</div><h3>We generate your AI content system</h3></article>
+        <article class="panel"><div class="step-number">3</div><h3>Receive your personalized lead generation strategy</h3></article>
+      </div>
     </section>
 
-    <section id="about" class="section grid-2">
-      <article class="panel">
-        <h2>About Us</h2>
-        <p class="muted">DigitalNest is a conversion-focused digital marketplace crafted for creators, freelancers, and online businesses. Every product is designed for immediate implementation and measurable results.</p>
-      </article>
-      <article class="panel lock">
-        <strong>Security & Anti-fraud</strong>
-        <ul>
-          <li>PayPal buyer and seller security standards.</li>
-          <li>One-time signed download links per transaction.</li>
-          <li>Email-bound order verification and basic anti-bot checks.</li>
-          <li>Server-side validation endpoint placeholder for production hardening.</li>
-        </ul>
-      </article>
+    <section class="section" id="pricing">
+      <div class="section-header">
+        <h2>Pricing</h2>
+        <p>Choose your package and pay securely via PayPal.</p>
+      </div>
+      <div class="pricing">
+        <article class="pricing-card">
+          <h3>Basic Package</h3>
+          <p class="price">$15</p>
+          <p class="muted">AI content ideas + prompts</p>
+          <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" value="elmehdibenyahia1991@gmail.com" />
+            <input type="hidden" name="item_name" value="AI Lead Engine - Basic Package" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <input type="hidden" name="amount" value="15.00" />
+            <button class="btn paypal-btn" type="submit">Pay with PayPal</button>
+          </form>
+        </article>
+
+        <article class="pricing-card">
+          <h3>Pro Package</h3>
+          <p class="price">$29</p>
+          <p class="muted">Content ideas + hooks + captions</p>
+          <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" value="elmehdibenyahia1991@gmail.com" />
+            <input type="hidden" name="item_name" value="AI Lead Engine - Pro Package" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <input type="hidden" name="amount" value="29.00" />
+            <button class="btn paypal-btn" type="submit">Pay with PayPal</button>
+          </form>
+        </article>
+
+        <article class="pricing-card">
+          <h3>Premium Package</h3>
+          <p class="price">$49</p>
+          <p class="muted">Full AI lead generation content system + weekly plan</p>
+          <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" value="elmehdibenyahia1991@gmail.com" />
+            <input type="hidden" name="item_name" value="AI Lead Engine - Premium Package" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <input type="hidden" name="amount" value="49.00" />
+            <button class="btn paypal-btn" type="submit">Pay with PayPal</button>
+          </form>
+        </article>
+      </div>
     </section>
 
-    <section id="testimonials" class="section grid-2">
-      <article class="panel">
-        <h3>“The planner bundle paid for itself in one week.”</h3>
-        <p class="muted">Sarah L., Productivity Coach</p>
-      </article>
-      <article class="panel">
-        <h3>“Checkout is smooth, and files are delivered instantly.”</h3>
-        <p class="muted">Amir K., Digital Entrepreneur</p>
-      </article>
-    </section>
-
-    <section id="faq" class="section panel faq-item">
-      <h2>FAQ</h2>
-      <details>
-        <summary>How do I get my files after payment?</summary>
-        <p class="muted">Immediately after PayPal confirms payment, your download button appears on-screen and a receipt with the same secure link is prepared for your email.</p>
-      </details>
-      <details>
-        <summary>Can I use the products for client projects?</summary>
-        <p class="muted">Yes, unless explicitly stated otherwise in a product license. Extended licenses are available for selected products.</p>
-      </details>
-      <details>
-        <summary>What if I need support?</summary>
-        <p class="muted">Use the contact form below and our team will respond within 24 hours.</p>
-      </details>
-    </section>
-
-    <section id="contact" class="section panel">
-      <h2>Contact</h2>
-      <form id="contactForm" class="grid-2">
-        <input type="text" placeholder="Full name" required />
-        <input type="email" placeholder="Email address" required />
-        <textarea rows="4" placeholder="Your message" style="grid-column: 1 / -1;" required></textarea>
-        <button class="btn-primary" type="submit" style="max-width:220px;">Send Message</button>
+    <section class="section" id="client-form">
+      <div class="section-header">
+        <h2>Client Form</h2>
+      </div>
+      <form class="panel client-form">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="business-type" placeholder="Business type" required />
+        <input type="text" name="platform" placeholder="Social media platform" required />
+        <textarea name="goals" placeholder="Goals" required></textarea>
+        <button class="btn btn-primary full" type="submit">Submit</button>
       </form>
-      <p id="contactMsg" class="muted" style="margin-top:0.6rem;"></p>
+    </section>
+
+    <section class="section" id="about">
+      <article class="panel">
+        <h2>About AI Lead Engine</h2>
+        <p class="muted">We help entrepreneurs and creators grow faster using powerful AI content systems designed to attract leads and clients.</p>
+        <p class="muted"><strong>Owner:</strong> Elmehdi Benyahia</p>
+      </article>
     </section>
   </main>
 
-  <div id="checkoutModal" class="modal" aria-hidden="true">
-    <div class="modal-card">
-      <div class="section-title" style="margin-bottom:0.4rem;">
-        <h3>Secure Checkout</h3>
-        <button id="closeModal" class="btn-outline" type="button">Close</button>
-      </div>
-
-      <div class="checkout-grid">
-        <section class="panel">
-          <h4 id="checkoutTitle" style="margin:0 0 .4rem"></h4>
-          <p id="checkoutDescription" class="muted"></p>
-          <div class="meta"><span>Category</span><strong id="checkoutCategory"></strong></div>
-          <div class="meta"><span>Price</span><strong class="price" id="checkoutPrice"></strong></div>
-          <label for="buyerEmail">Customer email</label>
-          <input id="buyerEmail" type="email" placeholder="you@example.com" required />
-          <small class="muted">A secure download link will be prepared for this email.</small>
-          <div class="status" id="checkoutStatus"></div>
-          <div class="downloads" id="downloadArea">
-            <strong>Payment successful ✅</strong>
-            <p class="muted" id="downloadHint"></p>
-            <a id="downloadBtn" class="btn btn-primary" href="#" download>Download Now</a>
-          </div>
-        </section>
-
-        <section class="panel">
-          <h4 style="margin:0 0 .4rem">Pay with PayPal</h4>
-          <p class="muted">Secure PayPal checkout configured to send payments to <strong>elmehdibenyahia1991@gmail.com</strong>.</p>
-          <a id="paypalCheckoutBtn" class="btn btn-primary" href="#" target="_blank" rel="noopener">Continue to PayPal</a>
-          <p id="paypalNote" class="muted" style="margin-top:0.5rem;">Enter your email first, then continue to complete payment on PayPal.</p>
-          <hr style="border:none;border-top:1px solid var(--border);margin:0.8rem 0">
-          <button id="simulatePayment" class="btn btn-outline" type="button">Demo: Simulate Approved Payment</button>
-          <p class="muted" style="margin-top:0.5rem;">After PayPal payment confirmation, you can unlock download access from this checkout flow.</p>
-        </section>
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer">
-    © <span id="year"></span> DigitalNest. All rights reserved.
+  <footer>
+    Contact: <a href="mailto:elmehdibenyahia1991@gmail.com">elmehdibenyahia1991@gmail.com</a>
   </footer>
-
-  <script>
-    const products = [
-      {
-        id: 'ebook-growth',
-        title: 'Creator Growth Blueprint',
-        description: 'A practical eBook to grow audience, improve digital funnels, and increase conversion rates.',
-        category: 'eBooks',
-        price: 19,
-        color: 'linear-gradient(135deg,#0ea5e9,#4338ca)',
-        fileName: 'creator-growth-blueprint.pdf'
-      },
-      {
-        id: 'planner-focus',
-        title: '90-Day Focus Planner',
-        description: 'Printable productivity planner with weekly planning pages, KPI sheets, and habit tracking.',
-        category: 'Printable Planners',
-        price: 12,
-        color: 'linear-gradient(135deg,#14b8a6,#0f766e)',
-        fileName: '90-day-focus-planner.zip'
-      },
-      {
-        id: 'canva-social',
-        title: 'Canva Social Kit',
-        description: '150 customizable Canva templates for reels, stories, and carousel posts.',
-        category: 'Canva Templates',
-        price: 24,
-        color: 'linear-gradient(135deg,#f97316,#ea580c)',
-        fileName: 'canva-social-kit.zip'
-      },
-      {
-        id: 'design-icons',
-        title: 'Premium UI Icon Pack',
-        description: 'A polished icon library with SVG, PNG, and Figma-ready source files.',
-        category: 'Design Resources',
-        price: 29,
-        color: 'linear-gradient(135deg,#8b5cf6,#4c1d95)',
-        fileName: 'premium-ui-icon-pack.zip'
-      },
-      {
-        id: 'guide-freelance',
-        title: 'Freelancer Pricing Guide',
-        description: 'Digital guide to package services, set profitable pricing, and close high-value clients.',
-        category: 'Digital Guides',
-        price: 17,
-        color: 'linear-gradient(135deg,#f43f5e,#be123c)',
-        fileName: 'freelancer-pricing-guide.pdf'
-      },
-      {
-        id: 'ebook-email',
-        title: 'Email Marketing Launchbook',
-        description: 'Step-by-step launch strategy with templates, sequences, and conversion optimization checklists.',
-        category: 'eBooks',
-        price: 22,
-        color: 'linear-gradient(135deg,#06b6d4,#155e75)',
-        fileName: 'email-marketing-launchbook.pdf'
-      }
-    ];
-
-    const featuredProducts = document.getElementById('featuredProducts');
-    const allProducts = document.getElementById('allProducts');
-    const search = document.getElementById('search');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const emptyState = document.getElementById('emptyState');
-    const checkoutModal = document.getElementById('checkoutModal');
-    const closeModal = document.getElementById('closeModal');
-    const checkoutTitle = document.getElementById('checkoutTitle');
-    const checkoutDescription = document.getElementById('checkoutDescription');
-    const checkoutCategory = document.getElementById('checkoutCategory');
-    const checkoutPrice = document.getElementById('checkoutPrice');
-    const checkoutStatus = document.getElementById('checkoutStatus');
-    const downloadArea = document.getElementById('downloadArea');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const downloadHint = document.getElementById('downloadHint');
-    const buyerEmail = document.getElementById('buyerEmail');
-    const contactForm = document.getElementById('contactForm');
-    const contactMsg = document.getElementById('contactMsg');
-    const simulatePaymentBtn = document.getElementById('simulatePayment');
-    const paypalCheckoutBtn = document.getElementById('paypalCheckoutBtn');
-    const paypalNote = document.getElementById('paypalNote');
-
-    let selectedProduct = null;
-    const PAYPAL_MERCHANT_EMAIL = "elmehdibenyahia1991@gmail.com";
-
-    function setStatus(type, message) {
-      checkoutStatus.className = `status ${type}`;
-      checkoutStatus.textContent = message;
-    }
-
-    function openCheckout(product) {
-      selectedProduct = product;
-      checkoutTitle.textContent = product.title;
-      checkoutDescription.textContent = product.description;
-      checkoutCategory.textContent = product.category;
-      checkoutPrice.textContent = `$${product.price.toFixed(2)}`;
-      setStatus('ok', 'Complete payment to unlock your secure download.');
-      downloadArea.classList.remove('show');
-      checkoutModal.classList.add('show');
-      checkoutModal.setAttribute('aria-hidden', 'false');
-
-      paypalCheckoutBtn.href = '#';
-      paypalNote.textContent = `Enter your email first, then continue to pay $${product.price.toFixed(2)} for ${product.title} on PayPal.`;
-    }
-
-    function closeCheckout() {
-      checkoutModal.classList.remove('show');
-      checkoutModal.setAttribute('aria-hidden', 'true');
-    }
-
-
-    function buildPayPalCheckoutLink(product, email) {
-      const params = new URLSearchParams({
-        cmd: '_xclick',
-        business: PAYPAL_MERCHANT_EMAIL,
-        item_name: product.title,
-        amount: product.price.toFixed(2),
-        currency_code: 'USD',
-        no_note: '1',
-        email
-      });
-      return `https://www.paypal.com/cgi-bin/webscr?${params.toString()}`;
-    }
-
-    function generateSignedDownload(product, email) {
-      const payload = `${product.id}|${email}|${Date.now()}`;
-      const token = btoa(payload).replace(/=/g, '');
-      const text = `Instant download package for ${product.title}\nToken: ${token}`;
-      return {
-        url: `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`,
-        token
-      };
-    }
-
-    function completeOrder(details = { id: 'DEMO-ORDER' }) {
-      const email = buyerEmail.value.trim();
-      if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-        setStatus('err', 'Please provide a valid email before payment confirmation.');
-        return false;
-      }
-
-      const signed = generateSignedDownload(selectedProduct, email);
-      downloadBtn.href = signed.url;
-      downloadBtn.download = selectedProduct.fileName;
-      downloadHint.textContent = `Order ${details.id} approved. Your secure link is bound to ${email}.`;
-      downloadArea.classList.add('show');
-      setStatus('ok', 'Payment verified. Your instant download is ready.');
-
-      const subject = encodeURIComponent(`Your DigitalNest download: ${selectedProduct.title}`);
-      const body = encodeURIComponent(`Thank you for your purchase!\n\nProduct: ${selectedProduct.title}\nOrder ID: ${details.id}\nSecure token: ${signed.token}\nDownload now from the checkout page.\n\nThis email draft represents where backend email delivery would send your secure link.`);
-      const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
-      window.open(mailtoLink, '_blank');
-      return true;
-    }
-
-    function renderCards(target, list, withDescription = false) {
-      target.innerHTML = '';
-      list.forEach(product => {
-        const card = document.createElement('article');
-        card.className = 'card';
-        card.innerHTML = `
-          <div class="thumb" style="background:${product.color}">${product.category.split(' ')[0]}</div>
-          <div class="card-body">
-            <div class="meta"><span>${product.category}</span><span class="price">$${product.price.toFixed(2)}</span></div>
-            <h3 style="font-size:1.05rem; margin:0">${product.title}</h3>
-            ${withDescription ? `<p class="muted">${product.description}</p>` : ''}
-            <div class="cta-row" style="margin-top:auto;">
-              <button class="btn-primary" data-buy="${product.id}">Buy Now</button>
-            </div>
-          </div>
-        `;
-        target.appendChild(card);
-      });
-    }
-
-    function getFilteredProducts() {
-      const term = search.value.toLowerCase().trim();
-      const category = categoryFilter.value;
-      return products.filter(p => {
-        const matchCategory = category === 'all' || p.category === category;
-        const matchSearch = !term || `${p.title} ${p.description} ${p.category}`.toLowerCase().includes(term);
-        return matchCategory && matchSearch;
-      });
-    }
-
-    function refreshStore() {
-      const list = getFilteredProducts();
-      renderCards(allProducts, list, true);
-      emptyState.style.display = list.length ? 'none' : 'block';
-    }
-
-    paypalCheckoutBtn.addEventListener('click', (e) => {
-      if (!selectedProduct) {
-        e.preventDefault();
-        setStatus('err', 'Please choose a product first.');
-        return;
-      }
-
-      const email = buyerEmail.value.trim();
-      if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-        e.preventDefault();
-        setStatus('err', 'Please provide a valid email before continuing to PayPal.');
-        return;
-      }
-
-      paypalCheckoutBtn.href = buildPayPalCheckoutLink(selectedProduct, email);
-      setStatus('ok', `Redirecting to PayPal checkout for ${selectedProduct.title}...`);
-    });
-
-    document.addEventListener('click', (e) => {
-      const buyBtn = e.target.closest('[data-buy]');
-      if (!buyBtn) return;
-      const product = products.find(p => p.id === buyBtn.dataset.buy);
-      if (product) openCheckout(product);
-    });
-
-    closeModal.addEventListener('click', closeCheckout);
-    checkoutModal.addEventListener('click', (e) => {
-      if (e.target === checkoutModal) closeCheckout();
-    });
-
-    simulatePaymentBtn.addEventListener('click', () => {
-      if (!selectedProduct) return;
-      completeOrder({ id: `DEMO-${Date.now()}` });
-    });
-
-    search.addEventListener('input', refreshStore);
-    categoryFilter.addEventListener('change', refreshStore);
-
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      contactMsg.textContent = 'Thanks! Your message has been received. We will respond within 24 hours.';
-      contactForm.reset();
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-    renderCards(featuredProducts, products.slice(0, 3));
-    refreshStore();
-  </script>
 </body>
 </html>
