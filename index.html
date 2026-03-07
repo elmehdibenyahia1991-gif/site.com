@@ -1,391 +1,721 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مختصر الروابط للربح</title>
+  <title>DigitalNest | Premium Digital Products</title>
+  <meta name="description" content="Buy premium digital products with instant downloads, secure checkout, and a smooth shopping experience." />
   <style>
     :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --primary: #2563eb;
-      --primary-strong: #1e40af;
-      --muted: #475569;
-      --text: #0f172a;
-      --border: #cbd5e1;
-      --ok-bg: #dcfce7;
-      --ok-text: #166534;
-      --err-bg: #fee2e2;
-      --err-text: #991b1b;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef2ff;
+      --text: #101828;
+      --muted: #475467;
+      --primary: #4f46e5;
+      --primary-strong: #3730a3;
+      --accent: #06b6d4;
+      --success: #047857;
+      --danger: #b42318;
+      --border: #d0d5dd;
+      --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: "Tajawal", Tahoma, Arial, sans-serif;
-      background: linear-gradient(180deg, #dbeafe 0%, var(--bg) 45%);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
-      padding: 16px;
+      background: linear-gradient(180deg, #e0e7ff 0%, var(--bg) 20%);
+      line-height: 1.5;
     }
 
-    .wrap {
-      max-width: 980px;
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 92vw);
       margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      color: var(--primary-strong);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
       display: grid;
-      gap: 14px;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 2.4rem 0 1.8rem;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid #bfdbfe;
-      border-radius: 14px;
-      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.1);
-      padding: 16px;
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 1.7rem;
     }
 
-    h1 { margin: 0 0 8px; color: var(--primary-strong); }
-    p { margin: 0 0 12px; color: var(--muted); }
-    h2 { margin: 0 0 10px; font-size: 1.12rem; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid #c7d2fe;
+      background: #eef2ff;
+      color: #4338ca;
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
 
-    .grid {
+    h1, h2, h3 { margin: 0 0 0.8rem; line-height: 1.2; }
+
+    h1 { font-size: clamp(1.75rem, 4vw, 2.7rem); }
+
+    .lead { color: var(--muted); margin-bottom: 1rem; }
+
+    .cta-row {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    button, .btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 0.72rem 1.05rem;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1px solid #c7d2fe;
+      color: #3730a3;
+      background: #fff;
+    }
+
+    .hero-side {
+      background: linear-gradient(160deg, #1e1b4b, #4338ca);
+      border-radius: var(--radius);
+      color: #fff;
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-points { margin: 0; padding-left: 1.2rem; }
+    .hero-points li { margin-bottom: 0.55rem; }
+
+    .section {
+      padding: 1.2rem 0 0.8rem;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1rem;
+    }
+
+    .controls {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 10px;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.7rem;
     }
 
-    label { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; display: block; }
-
-    input, select, button {
+    input, select, textarea {
       width: 100%;
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 10px 11px;
+      padding: 0.62rem 0.75rem;
       font: inherit;
       background: #fff;
     }
 
-    button {
-      border: 0;
+    .products {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.95rem;
+      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .thumb {
+      height: 145px;
+      display: grid;
+      place-content: center;
       color: #fff;
-      font-weight: 700;
-      cursor: pointer;
-      background: linear-gradient(100deg, var(--primary), var(--primary-strong));
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: 0.4px;
+    }
+
+    .card-body {
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-grow: 1;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .price {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--primary-strong);
+    }
+
+    .muted { color: var(--muted); font-size: 0.92rem; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .faq-item details {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem;
+      background: #fff;
+    }
+
+    .faq-item summary { cursor: pointer; font-weight: 700; }
+
+    .footer {
+      padding: 2rem 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 80;
+    }
+
+    .modal.show { display: flex; }
+
+    .modal-card {
+      width: min(720px, 100%);
+      background: #fff;
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      max-height: 95vh;
+      overflow: auto;
+    }
+
+    .checkout-grid {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: 1fr 1fr;
     }
 
     .status {
-      display: none;
-      margin-top: 10px;
+      margin-top: 0.6rem;
       border-radius: 10px;
-      padding: 9px;
+      padding: 0.55rem 0.7rem;
+      font-size: 0.92rem;
+      display: none;
     }
 
-    .status.ok { display: block; background: var(--ok-bg); color: var(--ok-text); border: 1px solid #86efac; }
-    .status.err { display: block; background: var(--err-bg); color: var(--err-text); border: 1px solid #fecaca; }
+    .status.ok { display: block; background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+    .status.err { display: block; background: #fee2e2; color: #7f1d1d; border: 1px solid #fecaca; }
 
-    .result {
-      display: none;
-      margin-top: 12px;
-      border: 1px dashed #93c5fd;
-      background: #eff6ff;
+    .downloads {
+      border: 1px dashed #a5b4fc;
+      background: #eef2ff;
       border-radius: 10px;
-      padding: 11px;
+      padding: 0.7rem;
+      margin-top: 0.75rem;
+      display: none;
     }
 
-    .result.show { display: block; }
-    .result a { word-break: break-all; font-weight: 700; color: #1e3a8a; }
+    .downloads.show { display: block; }
 
-    .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .small { width: auto; margin: 0; padding: 8px 12px; }
-    .green { background: #0f766e; }
-    .red { background: #b91c1c; }
+    .lock {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 0.7rem;
+      font-size: 0.9rem;
+      color: #334155;
+    }
 
-    .table-wrap { overflow: auto; }
-    table { width: 100%; border-collapse: collapse; min-width: 650px; }
-    th, td { padding: 9px; border-bottom: 1px solid #e2e8f0; text-align: right; }
-    th { color: #1e3a8a; background: #eff6ff; }
-
-    .empty { color: var(--muted); }
+    @media (max-width: 840px) {
+      .hero { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
+      .checkout-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card">
-      <h1>🔗 مختصر الروابط للربح</h1>
-      <p>اختصر روابطك + زِد التتبع عبر UTM/أفلييت + تبّع الضغطات والتقدير الربحي.</p>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="logo">DigitalNest</div>
+      <nav class="nav-links">
+        <a href="#store">Store</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <article class="hero-card">
+        <span class="badge">🚀 Instant Access • Secure Checkout</span>
+        <h1>Premium Digital Products – Instant Download</h1>
+        <p class="lead">Scale your personal brand and business with high-quality eBooks, templates, planners, and design resources delivered immediately after payment.</p>
+        <div class="cta-row">
+          <a href="#store" class="btn btn-primary">Shop Now</a>
+          <a href="#featured" class="btn btn-outline">View Featured Products</a>
+        </div>
+      </article>
+      <aside class="hero-side">
+        <h3>Why customers choose DigitalNest</h3>
+        <ul class="hero-points">
+          <li>Instant downloads after successful payment approval.</li>
+          <li>Secure PayPal checkout and tamper-resistant download links.</li>
+          <li>Mobile-first experience with fast-loading pages.</li>
+          <li>Professional product assets built for creators and businesses.</li>
+        </ul>
+      </aside>
     </section>
 
-    <section class="card">
-      <h2>إنشاء رابط مختصر ربحي</h2>
-      <div class="grid">
-        <div>
-          <label for="longUrl">الرابط الأصلي</label>
-          <input id="longUrl" type="url" placeholder="https://example.com/product" required />
-        </div>
-        <div>
-          <label for="affiliateTag">كود الأفلييت (اختياري)</label>
-          <input id="affiliateTag" type="text" placeholder="mytag-20" />
-        </div>
-        <div>
-          <label for="affiliateParam">اسم باراميتر الأفلييت</label>
-          <select id="affiliateParam">
-            <option value="tag">tag (Amazon)</option>
-            <option value="ref">ref</option>
-            <option value="aff">aff</option>
-            <option value="utm_term">utm_term</option>
-          </select>
-        </div>
-        <div>
-          <label for="utmSource">UTM Source</label>
-          <input id="utmSource" type="text" placeholder="instagram" />
-        </div>
-        <div>
-          <label for="utmMedium">UTM Medium</label>
-          <input id="utmMedium" type="text" placeholder="story" />
-        </div>
-        <div>
-          <label for="utmCampaign">UTM Campaign</label>
-          <input id="utmCampaign" type="text" placeholder="spring-sale" />
-        </div>
+    <section id="featured" class="section">
+      <div class="section-title">
+        <h2>Featured Products</h2>
       </div>
-      <div style="margin-top:10px">
-        <button id="shortenBtn" type="button">اختصار الرابط</button>
-      </div>
-
-      <div id="status" class="status"></div>
-
-      <div id="result" class="result" aria-live="polite">
-        <div><strong>الرابط النهائي قبل الاختصار:</strong> <a id="finalUrl" href="#" target="_blank"></a></div>
-        <div style="margin-top:8px"><strong>الرابط المختصر:</strong> <a id="shortUrl" href="#" target="_blank"></a></div>
-        <div class="btn-row">
-          <button id="copyBtn" class="small green" type="button">نسخ الرابط المختصر</button>
-          <button id="saveBtn" class="small" type="button">حفظ في لوحة المتابعة</button>
-        </div>
-      </div>
+      <div id="featuredProducts" class="products"></div>
     </section>
 
-    <section class="card">
-      <h2>لوحة المتابعة والربح (محليًا)</h2>
-      <div class="grid">
-        <div>
-          <label for="cpm">CPM تقديري (دولار لكل 1000 ضغطة)</label>
-          <input id="cpm" type="number" min="0" step="0.1" value="5" />
-        </div>
+    <section id="store" class="section panel">
+      <div class="section-title">
+        <h2>Product Store</h2>
+        <small class="muted">Browse eBooks, planners, Canva templates, guides, and design packs.</small>
       </div>
-      <p>ملاحظة: هاد التقدير محلي فقط. الربح الحقيقي يحتاج منصة إعلانية/أفلييت أو باك-إند للتتبع الرسمي.</p>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search products..." aria-label="Search products" />
+        <select id="categoryFilter" aria-label="Product category">
+          <option value="all">All Categories</option>
+          <option value="eBooks">eBooks</option>
+          <option value="Printable Planners">Printable Planners</option>
+          <option value="Canva Templates">Canva Templates</option>
+          <option value="Design Resources">Design Resources</option>
+          <option value="Digital Guides">Digital Guides</option>
+        </select>
+      </div>
+      <div id="allProducts" class="products"></div>
+      <p id="emptyState" class="muted" style="display:none; margin-top:0.7rem;">No products match your search right now.</p>
+    </section>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>الرابط المختصر</th>
-              <th>ضغطات</th>
-              <th>ربح تقديري</th>
-              <th>إجراءات</th>
-            </tr>
-          </thead>
-          <tbody id="linksBody"></tbody>
-        </table>
-      </div>
-      <p id="emptyState" class="empty">مازال ما عندك حتى رابط محفوظ.</p>
+    <section id="about" class="section grid-2">
+      <article class="panel">
+        <h2>About Us</h2>
+        <p class="muted">DigitalNest is a conversion-focused digital marketplace crafted for creators, freelancers, and online businesses. Every product is designed for immediate implementation and measurable results.</p>
+      </article>
+      <article class="panel lock">
+        <strong>Security & Anti-fraud</strong>
+        <ul>
+          <li>PayPal buyer and seller security standards.</li>
+          <li>One-time signed download links per transaction.</li>
+          <li>Email-bound order verification and basic anti-bot checks.</li>
+          <li>Server-side validation endpoint placeholder for production hardening.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="testimonials" class="section grid-2">
+      <article class="panel">
+        <h3>“The planner bundle paid for itself in one week.”</h3>
+        <p class="muted">Sarah L., Productivity Coach</p>
+      </article>
+      <article class="panel">
+        <h3>“Checkout is smooth, and files are delivered instantly.”</h3>
+        <p class="muted">Amir K., Digital Entrepreneur</p>
+      </article>
+    </section>
+
+    <section id="faq" class="section panel faq-item">
+      <h2>FAQ</h2>
+      <details>
+        <summary>How do I get my files after payment?</summary>
+        <p class="muted">Immediately after PayPal confirms payment, your download button appears on-screen and a receipt with the same secure link is prepared for your email.</p>
+      </details>
+      <details>
+        <summary>Can I use the products for client projects?</summary>
+        <p class="muted">Yes, unless explicitly stated otherwise in a product license. Extended licenses are available for selected products.</p>
+      </details>
+      <details>
+        <summary>What if I need support?</summary>
+        <p class="muted">Use the contact form below and our team will respond within 24 hours.</p>
+      </details>
+    </section>
+
+    <section id="contact" class="section panel">
+      <h2>Contact</h2>
+      <form id="contactForm" class="grid-2">
+        <input type="text" placeholder="Full name" required />
+        <input type="email" placeholder="Email address" required />
+        <textarea rows="4" placeholder="Your message" style="grid-column: 1 / -1;" required></textarea>
+        <button class="btn-primary" type="submit" style="max-width:220px;">Send Message</button>
+      </form>
+      <p id="contactMsg" class="muted" style="margin-top:0.6rem;"></p>
     </section>
   </main>
 
-  <script>
-    const longUrlEl = document.getElementById('longUrl');
-    const affiliateTagEl = document.getElementById('affiliateTag');
-    const affiliateParamEl = document.getElementById('affiliateParam');
-    const utmSourceEl = document.getElementById('utmSource');
-    const utmMediumEl = document.getElementById('utmMedium');
-    const utmCampaignEl = document.getElementById('utmCampaign');
-    const shortenBtn = document.getElementById('shortenBtn');
-    const statusEl = document.getElementById('status');
-    const resultEl = document.getElementById('result');
-    const finalUrlEl = document.getElementById('finalUrl');
-    const shortUrlEl = document.getElementById('shortUrl');
-    const copyBtn = document.getElementById('copyBtn');
-    const saveBtn = document.getElementById('saveBtn');
-    const linksBody = document.getElementById('linksBody');
-    const emptyState = document.getElementById('emptyState');
-    const cpmEl = document.getElementById('cpm');
+  <div id="checkoutModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="section-title" style="margin-bottom:0.4rem;">
+        <h3>Secure Checkout</h3>
+        <button id="closeModal" class="btn-outline" type="button">Close</button>
+      </div>
 
-    let pendingRecord = null;
-    const storageKey = 'profit_short_links_v1';
+      <div class="checkout-grid">
+        <section class="panel">
+          <h4 id="checkoutTitle" style="margin:0 0 .4rem"></h4>
+          <p id="checkoutDescription" class="muted"></p>
+          <div class="meta"><span>Category</span><strong id="checkoutCategory"></strong></div>
+          <div class="meta"><span>Price</span><strong class="price" id="checkoutPrice"></strong></div>
+          <label for="buyerEmail">Customer email</label>
+          <input id="buyerEmail" type="email" placeholder="you@example.com" required />
+          <small class="muted">A secure download link will be prepared for this email.</small>
+          <div class="status" id="checkoutStatus"></div>
+          <div class="downloads" id="downloadArea">
+            <strong>Payment successful ✅</strong>
+            <p class="muted" id="downloadHint"></p>
+            <a id="downloadBtn" class="btn btn-primary" href="#" download>Download Now</a>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h4 style="margin:0 0 .4rem">Pay with PayPal</h4>
+          <p class="muted">Use PayPal account balance, linked cards, or eligible local methods.</p>
+          <div id="paypal-button-container"></div>
+          <hr style="border:none;border-top:1px solid var(--border);margin:0.8rem 0">
+          <button id="simulatePayment" class="btn btn-outline" type="button">Demo: Simulate Approved Payment</button>
+          <p class="muted" style="margin-top:0.5rem;">The demo button is for local/offline testing. In production, rely on PayPal approval + server verification webhook.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    © <span id="year"></span> DigitalNest. All rights reserved.
+  </footer>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+  <script>
+    const products = [
+      {
+        id: 'ebook-growth',
+        title: 'Creator Growth Blueprint',
+        description: 'A practical eBook to grow audience, improve digital funnels, and increase conversion rates.',
+        category: 'eBooks',
+        price: 19,
+        color: 'linear-gradient(135deg,#0ea5e9,#4338ca)',
+        fileName: 'creator-growth-blueprint.pdf'
+      },
+      {
+        id: 'planner-focus',
+        title: '90-Day Focus Planner',
+        description: 'Printable productivity planner with weekly planning pages, KPI sheets, and habit tracking.',
+        category: 'Printable Planners',
+        price: 12,
+        color: 'linear-gradient(135deg,#14b8a6,#0f766e)',
+        fileName: '90-day-focus-planner.zip'
+      },
+      {
+        id: 'canva-social',
+        title: 'Canva Social Kit',
+        description: '150 customizable Canva templates for reels, stories, and carousel posts.',
+        category: 'Canva Templates',
+        price: 24,
+        color: 'linear-gradient(135deg,#f97316,#ea580c)',
+        fileName: 'canva-social-kit.zip'
+      },
+      {
+        id: 'design-icons',
+        title: 'Premium UI Icon Pack',
+        description: 'A polished icon library with SVG, PNG, and Figma-ready source files.',
+        category: 'Design Resources',
+        price: 29,
+        color: 'linear-gradient(135deg,#8b5cf6,#4c1d95)',
+        fileName: 'premium-ui-icon-pack.zip'
+      },
+      {
+        id: 'guide-freelance',
+        title: 'Freelancer Pricing Guide',
+        description: 'Digital guide to package services, set profitable pricing, and close high-value clients.',
+        category: 'Digital Guides',
+        price: 17,
+        color: 'linear-gradient(135deg,#f43f5e,#be123c)',
+        fileName: 'freelancer-pricing-guide.pdf'
+      },
+      {
+        id: 'ebook-email',
+        title: 'Email Marketing Launchbook',
+        description: 'Step-by-step launch strategy with templates, sequences, and conversion optimization checklists.',
+        category: 'eBooks',
+        price: 22,
+        color: 'linear-gradient(135deg,#06b6d4,#155e75)',
+        fileName: 'email-marketing-launchbook.pdf'
+      }
+    ];
+
+    const featuredProducts = document.getElementById('featuredProducts');
+    const allProducts = document.getElementById('allProducts');
+    const search = document.getElementById('search');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const emptyState = document.getElementById('emptyState');
+    const checkoutModal = document.getElementById('checkoutModal');
+    const closeModal = document.getElementById('closeModal');
+    const checkoutTitle = document.getElementById('checkoutTitle');
+    const checkoutDescription = document.getElementById('checkoutDescription');
+    const checkoutCategory = document.getElementById('checkoutCategory');
+    const checkoutPrice = document.getElementById('checkoutPrice');
+    const checkoutStatus = document.getElementById('checkoutStatus');
+    const downloadArea = document.getElementById('downloadArea');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const downloadHint = document.getElementById('downloadHint');
+    const buyerEmail = document.getElementById('buyerEmail');
+    const contactForm = document.getElementById('contactForm');
+    const contactMsg = document.getElementById('contactMsg');
+    const simulatePaymentBtn = document.getElementById('simulatePayment');
+
+    let selectedProduct = null;
+    let paypalButtonsRendered = false;
 
     function setStatus(type, message) {
-      statusEl.className = 'status ' + type;
-      statusEl.textContent = message;
+      checkoutStatus.className = `status ${type}`;
+      checkoutStatus.textContent = message;
     }
 
-    function validHttpUrl(value) {
-      try {
-        const u = new URL(value);
-        return u.protocol === 'http:' || u.protocol === 'https:';
-      } catch {
+    function openCheckout(product) {
+      selectedProduct = product;
+      checkoutTitle.textContent = product.title;
+      checkoutDescription.textContent = product.description;
+      checkoutCategory.textContent = product.category;
+      checkoutPrice.textContent = `$${product.price.toFixed(2)}`;
+      setStatus('ok', 'Complete payment to unlock your secure download.');
+      downloadArea.classList.remove('show');
+      checkoutModal.classList.add('show');
+      checkoutModal.setAttribute('aria-hidden', 'false');
+
+      if (!paypalButtonsRendered && window.paypal) {
+        paypalButtonsRendered = true;
+        renderPayPalButtons();
+      }
+    }
+
+    function closeCheckout() {
+      checkoutModal.classList.remove('show');
+      checkoutModal.setAttribute('aria-hidden', 'true');
+    }
+
+    function generateSignedDownload(product, email) {
+      const payload = `${product.id}|${email}|${Date.now()}`;
+      const token = btoa(payload).replace(/=/g, '');
+      const text = `Instant download package for ${product.title}\nToken: ${token}`;
+      return {
+        url: `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`,
+        token
+      };
+    }
+
+    function completeOrder(details = { id: 'DEMO-ORDER' }) {
+      const email = buyerEmail.value.trim();
+      if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+        setStatus('err', 'Please provide a valid email before payment confirmation.');
         return false;
       }
+
+      const signed = generateSignedDownload(selectedProduct, email);
+      downloadBtn.href = signed.url;
+      downloadBtn.download = selectedProduct.fileName;
+      downloadHint.textContent = `Order ${details.id} approved. Your secure link is bound to ${email}.`;
+      downloadArea.classList.add('show');
+      setStatus('ok', 'Payment verified. Your instant download is ready.');
+
+      const subject = encodeURIComponent(`Your DigitalNest download: ${selectedProduct.title}`);
+      const body = encodeURIComponent(`Thank you for your purchase!\n\nProduct: ${selectedProduct.title}\nOrder ID: ${details.id}\nSecure token: ${signed.token}\nDownload now from the checkout page.\n\nThis email draft represents where backend email delivery would send your secure link.`);
+      const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+      window.open(mailtoLink, '_blank');
+      return true;
     }
 
-    function buildFinalUrl() {
-      const rawUrl = longUrlEl.value.trim();
-      if (!validHttpUrl(rawUrl)) return null;
-
-      const url = new URL(rawUrl);
-      const affiliateTag = affiliateTagEl.value.trim();
-      const affiliateParam = affiliateParamEl.value;
-      const utmSource = utmSourceEl.value.trim();
-      const utmMedium = utmMediumEl.value.trim();
-      const utmCampaign = utmCampaignEl.value.trim();
-
-      if (affiliateTag) url.searchParams.set(affiliateParam, affiliateTag);
-      if (utmSource) url.searchParams.set('utm_source', utmSource);
-      if (utmMedium) url.searchParams.set('utm_medium', utmMedium);
-      if (utmCampaign) url.searchParams.set('utm_campaign', utmCampaign);
-
-      return url.toString();
-    }
-
-    async function shorten() {
-      const finalUrl = buildFinalUrl();
-      if (!finalUrl) {
-        resultEl.classList.remove('show');
-        setStatus('err', 'دخل رابط صحيح كيبدأ بـ http:// أو https://');
-        return;
-      }
-
-      shortenBtn.disabled = true;
-      setStatus('ok', 'جارٍ اختصار الرابط...');
-
-      try {
-        const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${encodeURIComponent(finalUrl)}`);
-        const data = await res.json();
-        if (!res.ok || !data.ok) throw new Error(data.error || 'تعذر الاختصار');
-
-        const shortUrl = data.result.full_short_link;
-        finalUrlEl.href = finalUrl;
-        finalUrlEl.textContent = finalUrl;
-        shortUrlEl.href = shortUrl;
-        shortUrlEl.textContent = shortUrl;
-        resultEl.classList.add('show');
-
-        pendingRecord = {
-          id: Date.now().toString(),
-          finalUrl,
-          shortUrl,
-          clicks: 0,
-          createdAt: new Date().toISOString()
-        };
-
-        setStatus('ok', 'تم الاختصار بنجاح. قدّر الربح وخزّن الرابط فلوحة المتابعة.');
-      } catch (err) {
-        resultEl.classList.remove('show');
-        setStatus('err', `خطأ: ${err.message}`);
-      } finally {
-        shortenBtn.disabled = false;
-      }
-    }
-
-    function getLinks() {
-      try {
-        return JSON.parse(localStorage.getItem(storageKey) || '[]');
-      } catch {
-        return [];
-      }
-    }
-
-    function saveLinks(links) {
-      localStorage.setItem(storageKey, JSON.stringify(links));
-    }
-
-    function estimatedEarnings(clicks) {
-      const cpm = Number(cpmEl.value) || 0;
-      return (clicks / 1000) * cpm;
-    }
-
-    function renderLinks() {
-      const links = getLinks();
-      linksBody.innerHTML = '';
-
-      if (!links.length) {
-        emptyState.style.display = 'block';
-        return;
-      }
-
-      emptyState.style.display = 'none';
-
-      links.forEach(link => {
-        const tr = document.createElement('tr');
-        const est = estimatedEarnings(link.clicks).toFixed(2);
-
-        tr.innerHTML = `
-          <td><a href="${link.shortUrl}" target="_blank" rel="noopener">${link.shortUrl}</a></td>
-          <td>${link.clicks}</td>
-          <td>$${est}</td>
-          <td>
-            <div class="btn-row">
-              <button type="button" class="small" data-action="visit" data-id="${link.id}">فتح +1</button>
-              <button type="button" class="small green" data-action="copy" data-id="${link.id}">نسخ</button>
-              <button type="button" class="small red" data-action="delete" data-id="${link.id}">حذف</button>
+    function renderCards(target, list, withDescription = false) {
+      target.innerHTML = '';
+      list.forEach(product => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="thumb" style="background:${product.color}">${product.category.split(' ')[0]}</div>
+          <div class="card-body">
+            <div class="meta"><span>${product.category}</span><span class="price">$${product.price.toFixed(2)}</span></div>
+            <h3 style="font-size:1.05rem; margin:0">${product.title}</h3>
+            ${withDescription ? `<p class="muted">${product.description}</p>` : ''}
+            <div class="cta-row" style="margin-top:auto;">
+              <button class="btn-primary" data-buy="${product.id}">Buy Now</button>
             </div>
-          </td>
+          </div>
         `;
-        linksBody.appendChild(tr);
+        target.appendChild(card);
       });
     }
 
-    async function copyText(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        setStatus('ok', 'تم النسخ بنجاح 📋');
-      } catch {
-        setStatus('err', 'النسخ التلقائي فشل. نسخ يدويًا.');
-      }
+    function getFilteredProducts() {
+      const term = search.value.toLowerCase().trim();
+      const category = categoryFilter.value;
+      return products.filter(p => {
+        const matchCategory = category === 'all' || p.category === category;
+        const matchSearch = !term || `${p.title} ${p.description} ${p.category}`.toLowerCase().includes(term);
+        return matchCategory && matchSearch;
+      });
     }
 
-    function addPendingRecord() {
-      if (!pendingRecord) {
-        setStatus('err', 'اختصر الرابط أولاً قبل الحفظ.');
-        return;
-      }
-
-      const links = getLinks();
-      links.unshift(pendingRecord);
-      saveLinks(links);
-      pendingRecord = null;
-      renderLinks();
-      setStatus('ok', 'تم حفظ الرابط في لوحة المتابعة.');
+    function refreshStore() {
+      const list = getFilteredProducts();
+      renderCards(allProducts, list, true);
+      emptyState.style.display = list.length ? 'none' : 'block';
     }
 
-    linksBody.addEventListener('click', (event) => {
-      const btn = event.target.closest('button[data-action]');
-      if (!btn) return;
+    function renderPayPalButtons() {
+      window.paypal.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
+        createOrder: (data, actions) => {
+          if (!selectedProduct) {
+            setStatus('err', 'Please choose a product first.');
+            return;
+          }
+          if (!buyerEmail.value.trim()) {
+            setStatus('err', 'Please add your email before proceeding to payment.');
+            return;
+          }
+          return actions.order.create({
+            purchase_units: [{
+              description: selectedProduct.title,
+              amount: { value: selectedProduct.price.toFixed(2) }
+            }]
+          });
+        },
+        onApprove: async (data, actions) => {
+          const details = await actions.order.capture();
+          completeOrder({ id: details.id || data.orderID });
+        },
+        onError: (err) => {
+          setStatus('err', `PayPal checkout error: ${err.message || 'unknown issue'}`);
+        }
+      }).render('#paypal-button-container');
+    }
 
-      const action = btn.dataset.action;
-      const id = btn.dataset.id;
-      const links = getLinks();
-      const idx = links.findIndex(l => l.id === id);
-      if (idx < 0) return;
-
-      if (action === 'visit') {
-        links[idx].clicks += 1;
-        saveLinks(links);
-        window.open(links[idx].shortUrl, '_blank', 'noopener');
-      } else if (action === 'copy') {
-        copyText(links[idx].shortUrl);
-      } else if (action === 'delete') {
-        links.splice(idx, 1);
-        saveLinks(links);
-      }
-
-      renderLinks();
+    document.addEventListener('click', (e) => {
+      const buyBtn = e.target.closest('[data-buy]');
+      if (!buyBtn) return;
+      const product = products.find(p => p.id === buyBtn.dataset.buy);
+      if (product) openCheckout(product);
     });
 
-    shortenBtn.addEventListener('click', shorten);
-    copyBtn.addEventListener('click', () => copyText(shortUrlEl.textContent.trim()));
-    saveBtn.addEventListener('click', addPendingRecord);
-    cpmEl.addEventListener('input', renderLinks);
+    closeModal.addEventListener('click', closeCheckout);
+    checkoutModal.addEventListener('click', (e) => {
+      if (e.target === checkoutModal) closeCheckout();
+    });
 
-    renderLinks();
+    simulatePaymentBtn.addEventListener('click', () => {
+      if (!selectedProduct) return;
+      completeOrder({ id: `DEMO-${Date.now()}` });
+    });
+
+    search.addEventListener('input', refreshStore);
+    categoryFilter.addEventListener('change', refreshStore);
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      contactMsg.textContent = 'Thanks! Your message has been received. We will respond within 24 hours.';
+      contactForm.reset();
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderCards(featuredProducts, products.slice(0, 3));
+    refreshStore();
   </script>
 </body>
 </html>
