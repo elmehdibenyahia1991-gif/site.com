@@ -1,674 +1,346 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VisionCraft Studio | Landing Page & Design Templates</title>
-  <meta name="description" content="VisionCraft Studio delivers professional multilingual landing page designs and template packs with direct PayPal checkout." />
+  <title>StoreForge AR | إنشاء متاجر إلكترونية احترافية</title>
+  <meta name="description" content="أنشئ متجرك الإلكتروني بسرعة مع باقات واضحة ودفع PayPal مباشر." />
   <style>
     :root {
-      --bg: #f3f5ff;
-      --surface: #ffffff;
-      --primary: #2f55d4;
-      --primary-dark: #1e3fa8;
-      --accent: #00b3a7;
+      --bg: #f5f8ff;
+      --surface: #fff;
+      --brand: #1f6feb;
+      --brand-dark: #1749a3;
+      --accent: #0bb07b;
       --text: #0f172a;
-      --muted: #4b5563;
-      --border: #dde2f5;
-      --shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
+      --muted: #475569;
+      --line: #dce5ff;
+      --radius: 16px;
+      --shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+      --max: 1120px;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: "Inter", "Segoe UI", Tahoma, Arial, sans-serif;
+      font-family: "Tajawal", "Cairo", "Segoe UI", sans-serif;
       color: var(--text);
-      background: radial-gradient(circle at top left, #e6ebff 0%, #f6f8ff 42%, #fbfcff 100%);
-      line-height: 1.6;
+      background: radial-gradient(circle at top right, #eaf1ff 0, #f7f9ff 45%, #fff 100%);
+      line-height: 1.7;
     }
 
-    body[dir="rtl"] {
-      font-family: "Tajawal", "Cairo", "Inter", "Segoe UI", sans-serif;
-    }
-
-    .container { width: min(1120px, 92vw); margin: 0 auto; }
+    .container { width: min(var(--max), 92vw); margin-inline: auto; }
 
     .topbar {
       position: sticky;
       top: 0;
       z-index: 20;
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(8px);
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);
     }
 
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding: 0.85rem 0;
-    }
-
-    .logo { font-size: 1.05rem; font-weight: 800; letter-spacing: 0.3px; color: var(--primary-dark); }
-
-    .nav-links, .lang-switcher {
-      display: flex;
       gap: 0.75rem;
+      padding: 0.85rem 0;
       flex-wrap: wrap;
-      align-items: center;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      font-weight: 600;
-      text-decoration: none;
-    }
+    .brand { font-size: 1.1rem; font-weight: 800; color: var(--brand-dark); }
+    .links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .links a { text-decoration: none; color: var(--muted); font-weight: 700; }
 
     .lang-btn {
-      border: 1px solid var(--border);
+      border: 1px solid var(--line);
       background: #fff;
-      color: var(--text);
       border-radius: 999px;
+      padding: 0.4rem 0.8rem;
       font: inherit;
-      padding: 0.35rem 0.8rem;
-      cursor: pointer;
       font-weight: 700;
-    }
-
-    .lang-btn.active {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff;
-      border-color: transparent;
+      cursor: pointer;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
+      grid-template-columns: 1.25fr 1fr;
       gap: 1rem;
-      padding: 2.4rem 0 1.7rem;
+      padding: 2rem 0 1rem;
     }
 
     .card {
       background: var(--surface);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      border: 1px solid var(--border);
       box-shadow: var(--shadow);
     }
 
-    .hero-main { padding: 2rem; }
-
+    .hero-main { padding: 1.8rem; }
     .hero-side {
       padding: 1.5rem;
-      background: linear-gradient(145deg, #16389c, #345ed7 60%, #00b3a7);
       color: #fff;
+      background: linear-gradient(140deg, #1b4db0, #1f6feb 55%, #0bb07b);
     }
 
     .badge {
       display: inline-block;
-      padding: 0.35rem 0.8rem;
       border-radius: 999px;
-      background: #eaf0ff;
-      border: 1px solid #cfd8ff;
-      color: var(--primary-dark);
+      background: #e8f1ff;
+      border: 1px solid #cddcff;
+      color: var(--brand-dark);
+      padding: 0.3rem 0.75rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      font-size: 0.86rem;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.7rem;
     }
 
-    h1, h2, h3 { line-height: 1.2; margin: 0 0 0.75rem; }
-
-    h1 { font-size: clamp(2rem, 4.6vw, 3.15rem); }
-
-    .lead { color: var(--muted); margin: 0 0 1.3rem; }
+    h1, h2, h3 { line-height: 1.25; margin: 0 0 0.7rem; }
+    h1 { font-size: clamp(2rem, 5vw, 3.1rem); }
+    .lead { color: var(--muted); margin: 0 0 1rem; }
 
     .btn {
-      border: none;
+      border: 0;
       border-radius: 12px;
+      padding: 0.72rem 1.05rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      text-decoration: none;
       font: inherit;
       font-weight: 700;
       cursor: pointer;
-      padding: 0.8rem 1.15rem;
-      text-decoration: none;
-      transition: transform 0.14s ease;
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-dark)); color: #fff; }
+    .btn.secondary { background: #fff; color: var(--text); border: 1px solid var(--line); }
 
-    .btn-primary {
-      color: #fff;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    }
+    section { padding: 2rem 0; }
 
-    .section { padding: 1rem 0; }
-
-    .section-header p { margin: 0; color: var(--muted); }
-
-    .grid-3 {
+    .grid3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 0.95rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
     }
 
-    .grid-templates {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 0.95rem;
-    }
-
-    .panel { padding: 1rem; }
-
-    .template-card {
-      padding: 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .template-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(145deg, rgba(47, 85, 212, 0.07), rgba(0, 179, 167, 0.06));
-      pointer-events: none;
-    }
-
-    .template-type {
-      display: inline-block;
-      font-size: 0.77rem;
-      font-weight: 800;
-      letter-spacing: 0.3px;
-      padding: 0.25rem 0.58rem;
-      border-radius: 999px;
-      color: var(--primary-dark);
-      background: #eaf0ff;
-      border: 1px solid #d1dbff;
-      margin-bottom: 0.6rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .template-card h3,
-    .template-card p,
-    .template-card .muted { position: relative; z-index: 1; }
+    .item { padding: 1.1rem; }
+    .muted { color: var(--muted); }
 
     .pricing {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.95rem;
     }
 
-    .pricing-card {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
+    .price { padding: 1.2rem; display: flex; flex-direction: column; }
+    .price strong { font-size: 2rem; color: var(--brand-dark); }
+    .price ul { margin: 0.8rem 0 1rem; padding-inline-start: 1rem; }
+    .featured { border: 2px solid var(--accent); transform: translateY(-2px); }
 
-    .price {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-    }
-
-    .muted { color: var(--muted); }
-
-    .feature-list { margin: 0; padding-left: 1.1rem; }
-
-    .feature-list li { margin-bottom: 0.4rem; }
-
-    .delivery-note {
-      border: 1px dashed #b9c8ff;
-      background: #f3f6ff;
-      border-radius: 14px;
-      padding: 0.78rem 0.85rem;
-      color: #1f2f6e;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .paypal-form { margin-top: auto; }
-
-    .paypal-btn {
-      width: 100%;
-      margin-top: 0.7rem;
-      color: #111;
-      border: 1px solid #edc565;
-      background: linear-gradient(135deg, #ffc439, #ffb347);
-      font-weight: 800;
-    }
+    .paypal-form { margin-top: auto; display: grid; gap: 0.55rem; }
 
     .contact {
+      padding: 1.2rem;
       text-align: center;
-      margin-top: 1.4rem;
-      padding: 1.35rem 0 2rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
+      background: #f9fbff;
+      border: 1px dashed #cfdcff;
+      border-radius: 14px;
     }
 
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; }
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 1.2rem 0 2rem;
+      text-align: center;
+    }
+
+    @media (max-width: 930px) {
+      .hero, .grid3, .pricing { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
-      <div class="logo" data-i18n="brand">VisionCraft Studio</div>
-      <nav class="nav-links">
-        <a href="#services" data-i18n="navServices">Services</a>
-        <a href="#templates" data-i18n="navTemplates">Templates</a>
-        <a href="#identity" data-i18n="navIdentity">Visual Identity</a>
-        <a href="#pricing" data-i18n="navPricing">Pricing</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
+      <div class="brand" data-i18n="brand">StoreForge AR</div>
+      <nav class="links">
+        <a href="#services" data-i18n="navServices">الخدمات</a>
+        <a href="#templates" data-i18n="navTemplates">القوالب</a>
+        <a href="#pricing" data-i18n="navPricing">الأسعار</a>
+        <a href="#contact" data-i18n="navContact">التواصل</a>
       </nav>
-      <div class="lang-switcher" aria-label="Language switcher">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="ar">AR</button>
-        <button class="lang-btn" data-lang="fr">FR</button>
-      </div>
+      <button id="langBtn" class="lang-btn">FR</button>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero" id="home">
+    <section class="hero">
       <article class="card hero-main">
-        <span class="badge" data-i18n="badge">Multilingual Professional Design Service</span>
-        <h1 data-i18n="heroTitle">Professional Landing Pages & Design Templates in 3 Languages</h1>
-        <p class="lead" data-i18n="heroLead">We build conversion-focused landing pages and modern design packs in English, Arabic, and French with affordable pricing and fast delivery.</p>
-        <a class="btn btn-primary" href="#pricing" data-i18n="heroCta">Choose Package & Start Service</a>
+        <span class="badge" data-i18n="badge">منصة إنشاء متاجر إلكترونية جاهزة للبيع</span>
+        <h1 data-i18n="heroTitle">أنشئ متجرك الإلكتروني وابدأ البيع بسرعة</h1>
+        <p class="lead" data-i18n="heroLead">واجهة احترافية، باقات واضحة، ودفع PayPal مباشر لتبدأ مشروعك بدون تعقيد.</p>
+        <a href="#pricing" class="btn primary" data-i18n="heroCta">اختر الباقة وادفع الآن</a>
       </article>
       <aside class="card hero-side">
-        <h3 data-i18n="sideTitle">Why clients choose us</h3>
+        <h3 data-i18n="whyTitle">لماذا هذه الخدمة؟</h3>
         <ul>
-          <li data-i18n="side1">Premium landing page layouts tailored to your business.</li>
-          <li data-i18n="side2">Multiple professional templates ready to customize.</li>
-          <li data-i18n="side3">Simple symbolic pricing for startups and creators.</li>
-          <li data-i18n="side4">Instant PayPal checkout and direct service onboarding.</li>
+          <li data-i18n="why1">إطلاق سريع لمتجر متكامل.</li>
+          <li data-i18n="why2">تصميم واضح يرفع التحويل.</li>
+          <li data-i18n="why3">دعم العربية والفرنسية والإنجليزية.</li>
+          <li data-i18n="why4">دفع آمن عبر PayPal.</li>
         </ul>
       </aside>
     </section>
 
-    <section class="section" id="services">
-      <div class="section-header">
-        <h2 data-i18n="servicesTitle">Design Services</h2>
-      </div>
-      <div class="grid-3">
-        <article class="card panel">
-          <h3 data-i18n="service1Title">Landing Page Design</h3>
-          <p class="muted" data-i18n="service1Text">High-converting landing pages for products, services, and lead generation campaigns.</p>
-        </article>
-        <article class="card panel" id="identity">
-          <h3 data-i18n="service2Title">Professional Visual Identity</h3>
-          <p class="muted" data-i18n="service2Text">Logo direction, colors, typography, and mini brand guidelines for a strong identity.</p>
-        </article>
-        <article class="card panel">
-          <h3 data-i18n="service3Title">Marketing Design Packs</h3>
-          <p class="muted" data-i18n="service3Text">Social posts, stories, covers, ad visuals, and promotional banners ready to publish.</p>
-        </article>
+    <section id="services">
+      <h2 data-i18n="servicesTitle">خدمات إنشاء المتاجر</h2>
+      <div class="grid3">
+        <article class="card item"><h3 data-i18n="s1t">متجر جاهز للبيع</h3><p class="muted" data-i18n="s1d">صفحات المنتج، السلة، وسياسة الشحن بشكل احترافي.</p></article>
+        <article class="card item"><h3 data-i18n="s2t">هوية بصرية للمشروع</h3><p class="muted" data-i18n="s2d">ألوان، خطوط، وأسلوب واجهة مناسب لنشاطك.</p></article>
+        <article class="card item"><h3 data-i18n="s3t">تهيئة للتحويل</h3><p class="muted" data-i18n="s3d">تحسين مسار العميل من الزيارة إلى إتمام الطلب.</p></article>
       </div>
     </section>
 
-    <section class="section" id="templates">
-      <div class="section-header">
-        <h2 data-i18n="templatesTitle">Professional Template Collection</h2>
-        <p data-i18n="templatesLead">Choose from multiple ready-to-customize templates based on your niche and goals.</p>
-      </div>
-      <div class="grid-templates">
-        <article class="card template-card">
-          <span class="template-type" data-i18n="tempTag1">E-commerce</span>
-          <h3 data-i18n="tempTitle1">Product Launch Landing</h3>
-          <p class="muted" data-i18n="tempDesc1">Clean product-focused structure with trust blocks and strong CTA flow.</p>
-        </article>
-        <article class="card template-card">
-          <span class="template-type" data-i18n="tempTag2">Agency</span>
-          <h3 data-i18n="tempTitle2">Service Booking Template</h3>
-          <p class="muted" data-i18n="tempDesc2">Professional layout for agencies, consultants, and freelancers.</p>
-        </article>
-        <article class="card template-card">
-          <span class="template-type" data-i18n="tempTag3">SaaS</span>
-          <h3 data-i18n="tempTitle3">Software Demo Page</h3>
-          <p class="muted" data-i18n="tempDesc3">Feature-driven sections for trials, pricing, and onboarding.</p>
-        </article>
-        <article class="card template-card">
-          <span class="template-type" data-i18n="tempTag4">Creator</span>
-          <h3 data-i18n="tempTitle4">Personal Brand Funnel</h3>
-          <p class="muted" data-i18n="tempDesc4">Capture leads, showcase offers, and grow your audience fast.</p>
-        </article>
-        <article class="card template-card">
-          <span class="template-type" data-i18n="tempTag5">Restaurant</span>
-          <h3 data-i18n="tempTitle5">Menu & Delivery Page</h3>
-          <p class="muted" data-i18n="tempDesc5">Modern food showcase with order and reservation actions.</p>
-        </article>
-        <article class="card template-card">
-          <span class="template-type" data-i18n="tempTag6">Event</span>
-          <h3 data-i18n="tempTitle6">Registration Landing Page</h3>
-          <p class="muted" data-i18n="tempDesc6">Event timeline, speaker highlights, and one-click registration CTA.</p>
-        </article>
+    <section id="templates">
+      <h2 data-i18n="templatesTitle">قوالب احترافية جاهزة</h2>
+      <div class="grid3">
+        <article class="card item"><h3 data-i18n="t1t">قالب متجر عام</h3><p class="muted" data-i18n="t1d">مناسب لمعظم المنتجات مع واجهة نظيفة.</p></article>
+        <article class="card item"><h3 data-i18n="t2t">قالب متجر موضة</h3><p class="muted" data-i18n="t2d">عرض صور قوي وتفاصيل منتج مركزة.</p></article>
+        <article class="card item"><h3 data-i18n="t3t">قالب متجر رقمي</h3><p class="muted" data-i18n="t3d">لبيع الدورات، الكتب، والخدمات الرقمية.</p></article>
       </div>
     </section>
 
-    <section class="section" id="pricing">
-      <div class="section-header">
-        <h2 data-i18n="pricingTitle">Affordable Packages</h2>
-        <p data-i18n="pricingLead">Click your package, pay via PayPal, and go directly to service onboarding.</p>
-      </div>
+    <section id="pricing">
+      <h2 data-i18n="pricingTitle">باقات مع دفع PayPal مفعل</h2>
+      <p class="lead" data-i18n="pricingLead">اختر الباقة المناسبة واضغط الدفع، وسيتم تحويلك مباشرة إلى PayPal.</p>
       <div class="pricing">
-        <article class="card pricing-card">
-          <h3 data-i18n="basicTitle">Starter Package</h3>
-          <p class="price">$12</p>
-          <p class="muted" data-i18n="basicDesc">Perfect for simple launch pages.</p>
-          <ul class="feature-list muted">
-            <li data-i18n="basicF1">1 landing page design</li>
-            <li data-i18n="basicF2">3 editable template blocks</li>
-            <li data-i18n="basicF3">1 language + 2 revisions</li>
+        <article class="card price">
+          <h3 data-i18n="p1t">Starter</h3>
+          <strong>$49</strong>
+          <ul>
+            <li data-i18n="p1f1">متجر من صفحة رئيسية + منتجات</li>
+            <li data-i18n="p1f2">تعديلان مجانيان</li>
+            <li data-i18n="p1f3">تسليم سريع</li>
           </ul>
-          <p class="delivery-note" data-i18n="directStart">After payment, you are redirected directly to start your service request.</p>
           <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
             <input type="hidden" name="cmd" value="_xclick" />
             <input type="hidden" name="business" value="elmehdibenyahia1991@gmail.com" />
-            <input type="hidden" name="item_name" value="VisionCraft Studio - Starter Package" />
+            <input type="hidden" name="item_name" value="StoreForge Starter Pack" />
+            <input type="hidden" name="amount" value="49" />
             <input type="hidden" name="currency_code" value="USD" />
-            <input type="hidden" name="amount" value="12.00" />
-            <input type="hidden" name="return" value="/index.html#service-start" />
-            <button class="btn paypal-btn" type="submit" data-i18n="paypalBtn">Pay & Start Service</button>
+            <button type="submit" class="btn secondary" data-i18n="payBtn">ادفع عبر PayPal</button>
           </form>
         </article>
 
-        <article class="card pricing-card">
-          <h3 data-i18n="proTitle">Business Package</h3>
-          <p class="price">$25</p>
-          <p class="muted" data-i18n="proDesc">Ideal for active brands and campaigns.</p>
-          <ul class="feature-list muted">
-            <li data-i18n="proF1">2 landing page variants</li>
-            <li data-i18n="proF2">8 premium template sections</li>
-            <li data-i18n="proF3">2 languages + identity tune-up</li>
+        <article class="card price featured">
+          <h3 data-i18n="p2t">Business</h3>
+          <strong>$99</strong>
+          <ul>
+            <li data-i18n="p2f1">متجر متكامل + صفحة هبوط</li>
+            <li data-i18n="p2f2">دعم لغتين</li>
+            <li data-i18n="p2f3">تحسين تجربة الجوال</li>
           </ul>
-          <p class="delivery-note" data-i18n="directStart">After payment, you are redirected directly to start your service request.</p>
           <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
             <input type="hidden" name="cmd" value="_xclick" />
             <input type="hidden" name="business" value="elmehdibenyahia1991@gmail.com" />
-            <input type="hidden" name="item_name" value="VisionCraft Studio - Business Package" />
+            <input type="hidden" name="item_name" value="StoreForge Business Pack" />
+            <input type="hidden" name="amount" value="99" />
             <input type="hidden" name="currency_code" value="USD" />
-            <input type="hidden" name="amount" value="25.00" />
-            <input type="hidden" name="return" value="/index.html#service-start" />
-            <button class="btn paypal-btn" type="submit" data-i18n="paypalBtn">Pay & Start Service</button>
+            <button type="submit" class="btn primary" data-i18n="payBtn">ادفع عبر PayPal</button>
           </form>
         </article>
 
-        <article class="card pricing-card">
-          <h3 data-i18n="premiumTitle">Premium Identity Package</h3>
-          <p class="price">$45</p>
-          <p class="muted" data-i18n="premiumDesc">Complete visual system for strong growth.</p>
-          <ul class="feature-list muted">
-            <li data-i18n="premiumF1">3 landing pages + full funnel style</li>
-            <li data-i18n="premiumF2">Complete EN + AR + FR templates</li>
-            <li data-i18n="premiumF3">Mini brand guide + all source assets</li>
+        <article class="card price">
+          <h3 data-i18n="p3t">Premium</h3>
+          <strong>$199</strong>
+          <ul>
+            <li data-i18n="p3f1">متجر كامل + 3 صفحات تسويق</li>
+            <li data-i18n="p3f2">3 لغات</li>
+            <li data-i18n="p3f3">دعم بعد الإطلاق</li>
           </ul>
-          <p class="delivery-note" data-i18n="directStart">After payment, you are redirected directly to start your service request.</p>
           <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
             <input type="hidden" name="cmd" value="_xclick" />
             <input type="hidden" name="business" value="elmehdibenyahia1991@gmail.com" />
-            <input type="hidden" name="item_name" value="VisionCraft Studio - Premium Identity Package" />
+            <input type="hidden" name="item_name" value="StoreForge Premium Pack" />
+            <input type="hidden" name="amount" value="199" />
             <input type="hidden" name="currency_code" value="USD" />
-            <input type="hidden" name="amount" value="45.00" />
-            <input type="hidden" name="return" value="/index.html#service-start" />
-            <button class="btn paypal-btn" type="submit" data-i18n="paypalBtn">Pay & Start Service</button>
+            <button type="submit" class="btn secondary" data-i18n="payBtn">ادفع عبر PayPal</button>
           </form>
         </article>
       </div>
     </section>
-    <section class="section" id="service-start">
-      <article class="card panel">
-        <h2 data-i18n="startTitle">Start Your Service Immediately</h2>
-        <p class="muted" data-i18n="startText">After payment, send your project brief directly by email and we start production quickly.</p>
-        <a class="btn btn-primary" href="mailto:elmehdibenyahia1991@gmail.com?subject=New%20Design%20Order&body=Hello%20VisionCraft%2C%20I%20have%20completed%20payment.%20My%20package%20is%3A" data-i18n="startBtn">Send Brief Now</a>
-      </article>
+
+    <section id="contact">
+      <div class="contact">
+        <h3 data-i18n="contactTitle">للتواصل المباشر بعد الدفع</h3>
+        <p class="muted" data-i18n="contactText">راسلني على البريد التالي وسأبدأ تنفيذ متجرك مباشرة:</p>
+        <a href="mailto:Elmehdibenyahia1991@gmail.com" class="btn primary">Elmehdibenyahia1991@gmail.com</a>
+      </div>
     </section>
   </main>
 
-  <footer class="contact" id="contact">
-    <span data-i18n="contactText">Contact us to start your project:</span>
-    <a href="mailto:elmehdibenyahia1991@gmail.com">elmehdibenyahia1991@gmail.com</a>
+  <footer>
+    <div class="container" data-i18n="footer">StoreForge AR — خدمة إنشاء متاجر إلكترونية مع دفع PayPal مباشر.</div>
   </footer>
 
   <script>
     const translations = {
-      en: {
-        brand: "VisionCraft Studio",
-        navServices: "Services",
-        navTemplates: "Templates",
-        navIdentity: "Visual Identity",
-        navPricing: "Pricing",
-        navContact: "Contact",
-        badge: "Multilingual Professional Design Service",
-        heroTitle: "Professional Landing Pages & Design Templates in 3 Languages",
-        heroLead: "We build conversion-focused landing pages and modern design packs in English, Arabic, and French with affordable pricing and fast delivery.",
-        heroCta: "Choose Package & Start Service",
-        sideTitle: "Why clients choose us",
-        side1: "Premium landing page layouts tailored to your business.",
-        side2: "Multiple professional templates ready to customize.",
-        side3: "Simple symbolic pricing for startups and creators.",
-        side4: "Instant PayPal checkout and direct service onboarding.",
-        servicesTitle: "Design Services",
-        service1Title: "Landing Page Design",
-        service1Text: "High-converting landing pages for products, services, and lead generation campaigns.",
-        service2Title: "Professional Visual Identity",
-        service2Text: "Logo direction, colors, typography, and mini brand guidelines for a strong identity.",
-        service3Title: "Marketing Design Packs",
-        service3Text: "Social posts, stories, covers, ad visuals, and promotional banners ready to publish.",
-        templatesTitle: "Professional Template Collection",
-        templatesLead: "Choose from multiple ready-to-customize templates based on your niche and goals.",
-        tempTag1: "E-commerce",
-        tempTitle1: "Product Launch Landing",
-        tempDesc1: "Clean product-focused structure with trust blocks and strong CTA flow.",
-        tempTag2: "Agency",
-        tempTitle2: "Service Booking Template",
-        tempDesc2: "Professional layout for agencies, consultants, and freelancers.",
-        tempTag3: "SaaS",
-        tempTitle3: "Software Demo Page",
-        tempDesc3: "Feature-driven sections for trials, pricing, and onboarding.",
-        tempTag4: "Creator",
-        tempTitle4: "Personal Brand Funnel",
-        tempDesc4: "Capture leads, showcase offers, and grow your audience fast.",
-        tempTag5: "Restaurant",
-        tempTitle5: "Menu & Delivery Page",
-        tempDesc5: "Modern food showcase with order and reservation actions.",
-        tempTag6: "Event",
-        tempTitle6: "Registration Landing Page",
-        tempDesc6: "Event timeline, speaker highlights, and one-click registration CTA.",
-        pricingTitle: "Affordable Packages",
-        pricingLead: "Click your package, pay via PayPal, and go directly to service onboarding.",
-        basicTitle: "Starter Package",
-        basicDesc: "Perfect for simple launch pages.",
-        basicF1: "1 landing page design",
-        basicF2: "3 editable template blocks",
-        basicF3: "1 language + 2 revisions",
-        proTitle: "Business Package",
-        proDesc: "Ideal for active brands and campaigns.",
-        proF1: "2 landing page variants",
-        proF2: "8 premium template sections",
-        proF3: "2 languages + identity tune-up",
-        premiumTitle: "Premium Identity Package",
-        premiumDesc: "Complete visual system for strong growth.",
-        premiumF1: "3 landing pages + full funnel style",
-        premiumF2: "Complete EN + AR + FR templates",
-        premiumF3: "Mini brand guide + all source assets",
-        directStart: "After payment, you are redirected directly to start your service request.",
-        paypalBtn: "Pay & Start Service",
-        startTitle: "Start Your Service Immediately",
-        startText: "After payment, send your project brief directly by email and we start production quickly.",
-        startBtn: "Send Brief Now",
-        contactText: "Contact us to start your project:"
-      },
       ar: {
-        brand: "فيجن كرافت ستوديو",
-        navServices: "الخدمات",
-        navTemplates: "القوالب",
-        navIdentity: "الهوية البصرية",
-        navPricing: "الأسعار",
-        navContact: "التواصل",
-        badge: "خدمة تصميم احترافية متعددة اللغات",
-        heroTitle: "صفحات هبوط احترافية وقوالب تصميم بثلاث لغات",
-        heroLead: "نصمم صفحات هبوط عالية التحويل وحزم تصميم عصرية بالإنجليزية والعربية والفرنسية بأسعار مناسبة وتسليم سريع.",
-        heroCta: "اختر الباقة وابدأ الخدمة",
-        sideTitle: "لماذا يختارنا العملاء؟",
-        side1: "تصميم صفحات هبوط احترافي يناسب نشاطك.",
-        side2: "قوالب متعددة احترافية جاهزة للتخصيص.",
-        side3: "باقات واضحة بأسعار رمزية للمشاريع الناشئة.",
-        side4: "دفع فوري عبر بايبال وبدء مباشر للخدمة.",
-        servicesTitle: "خدمات التصميم",
-        service1Title: "تصميم صفحات الهبوط",
-        service1Text: "صفحات هبوط موجهة للتحويل للمنتجات والخدمات وحملات جمع العملاء.",
-        service2Title: "هوية بصرية احترافية",
-        service2Text: "توجيه للشعار والألوان والخطوط ودليل بصري مصغر لهوية قوية.",
-        service3Title: "حزم تصميم تسويقي",
-        service3Text: "منشورات وقصص وأغلفة وإعلانات وبانرات جاهزة للنشر.",
-        templatesTitle: "مكتبة قوالب احترافية",
-        templatesLead: "اختر من قوالب متعددة جاهزة للتعديل حسب مجالك وأهدافك.",
-        tempTag1: "متاجر إلكترونية",
-        tempTitle1: "قالب إطلاق منتج",
-        tempDesc1: "هيكل نظيف للمنتج مع عناصر ثقة ومسار دعوة إجراء قوي.",
-        tempTag2: "وكالات",
-        tempTitle2: "قالب حجز الخدمات",
-        tempDesc2: "تصميم احترافي مناسب للوكالات والاستشاريين والمستقلين.",
-        tempTag3: "برمجيات",
-        tempTitle3: "قالب عرض البرنامج",
-        tempDesc3: "أقسام تركّز على الميزات والتجربة والتسعير وبداية الاستخدام.",
-        tempTag4: "صناع محتوى",
-        tempTitle4: "قالب الهوية الشخصية",
-        tempDesc4: "جمع العملاء المحتملين وعرض العروض وتنمية الجمهور بسرعة.",
-        tempTag5: "مطاعم",
-        tempTitle5: "قالب قائمة الطعام والتوصيل",
-        tempDesc5: "عرض بصري حديث للأطباق مع أزرار الطلب والحجز.",
-        tempTag6: "فعاليات",
-        tempTitle6: "قالب التسجيل في الفعالية",
-        tempDesc6: "جدول فعالية ومتحدثون ودعوة تسجيل بنقرة واحدة.",
-        pricingTitle: "باقات بأسعار رمزية",
-        pricingLead: "اضغط على الباقة وادفع عبر بايبال ثم انتقل مباشرة لبدء الخدمة.",
-        basicTitle: "باقة البداية",
-        basicDesc: "مثالية لصفحات إطلاق بسيطة.",
-        basicF1: "تصميم صفحة هبوط واحدة",
-        basicF2: "3 بلوكات قوالب قابلة للتعديل",
-        basicF3: "لغة واحدة + تعديلان",
-        proTitle: "باقة الأعمال",
-        proDesc: "مناسبة للعلامات النشطة والحملات الإعلانية.",
-        proF1: "نسختان لصفحات هبوط",
-        proF2: "8 أقسام قوالب احترافية",
-        proF3: "لغتان + تحسين هوية بصرية",
-        premiumTitle: "باقة الهوية المتقدمة",
-        premiumDesc: "نظام بصري متكامل للنمو القوي.",
-        premiumF1: "3 صفحات هبوط مع نمط Funnel كامل",
-        premiumF2: "قوالب كاملة EN + AR + FR",
-        premiumF3: "دليل هوية مصغر + جميع ملفات المصدر",
-        directStart: "بعد الدفع سيتم تحويلك مباشرة لبدء طلب الخدمة.",
-        paypalBtn: "ادفع وابدأ الخدمة",
-        startTitle: "ابدأ خدمتك مباشرة",
-        startText: "بعد الدفع أرسل تفاصيل مشروعك عبر البريد مباشرة لنبدأ التنفيذ بسرعة.",
-        startBtn: "أرسل التفاصيل الآن",
-        contactText: "تواصل معنا لبدء مشروعك:"
+        brand: "StoreForge AR", navServices: "الخدمات", navTemplates: "القوالب", navPricing: "الأسعار", navContact: "التواصل",
+        badge: "منصة إنشاء متاجر إلكترونية جاهزة للبيع",
+        heroTitle: "أنشئ متجرك الإلكتروني وابدأ البيع بسرعة",
+        heroLead: "واجهة احترافية، باقات واضحة، ودفع PayPal مباشر لتبدأ مشروعك بدون تعقيد.",
+        heroCta: "اختر الباقة وادفع الآن",
+        whyTitle: "لماذا هذه الخدمة؟", why1: "إطلاق سريع لمتجر متكامل.", why2: "تصميم واضح يرفع التحويل.", why3: "دعم العربية والفرنسية والإنجليزية.", why4: "دفع آمن عبر PayPal.",
+        servicesTitle: "خدمات إنشاء المتاجر", s1t: "متجر جاهز للبيع", s1d: "صفحات المنتج، السلة، وسياسة الشحن بشكل احترافي.", s2t: "هوية بصرية للمشروع", s2d: "ألوان، خطوط، وأسلوب واجهة مناسب لنشاطك.", s3t: "تهيئة للتحويل", s3d: "تحسين مسار العميل من الزيارة إلى إتمام الطلب.",
+        templatesTitle: "قوالب احترافية جاهزة", t1t: "قالب متجر عام", t1d: "مناسب لمعظم المنتجات مع واجهة نظيفة.", t2t: "قالب متجر موضة", t2d: "عرض صور قوي وتفاصيل منتج مركزة.", t3t: "قالب متجر رقمي", t3d: "لبيع الدورات، الكتب، والخدمات الرقمية.",
+        pricingTitle: "باقات مع دفع PayPal مفعل", pricingLead: "اختر الباقة المناسبة واضغط الدفع، وسيتم تحويلك مباشرة إلى PayPal.",
+        p1t: "Starter", p1f1: "متجر من صفحة رئيسية + منتجات", p1f2: "تعديلان مجانيان", p1f3: "تسليم سريع",
+        p2t: "Business", p2f1: "متجر متكامل + صفحة هبوط", p2f2: "دعم لغتين", p2f3: "تحسين تجربة الجوال",
+        p3t: "Premium", p3f1: "متجر كامل + 3 صفحات تسويق", p3f2: "3 لغات", p3f3: "دعم بعد الإطلاق",
+        payBtn: "ادفع عبر PayPal",
+        contactTitle: "للتواصل المباشر بعد الدفع", contactText: "راسلني على البريد التالي وسأبدأ تنفيذ متجرك مباشرة:",
+        footer: "StoreForge AR — خدمة إنشاء متاجر إلكترونية مع دفع PayPal مباشر."
       },
       fr: {
-        brand: "VisionCraft Studio",
-        navServices: "Services",
-        navTemplates: "Modèles",
-        navIdentity: "Identité visuelle",
-        navPricing: "Tarifs",
-        navContact: "Contact",
-        badge: "Service de design professionnel multilingue",
-        heroTitle: "Landing pages professionnelles et modèles design en 3 langues",
-        heroLead: "Nous concevons des landing pages orientées conversion et des packs design modernes en anglais, arabe et français à prix abordable.",
-        heroCta: "Choisir un pack et démarrer",
-        sideTitle: "Pourquoi les clients nous choisissent",
-        side1: "Mises en page premium adaptées à votre activité.",
-        side2: "Plusieurs modèles professionnels prêts à personnaliser.",
-        side3: "Tarifs symboliques simples pour startups et créateurs.",
-        side4: "Paiement PayPal instantané et lancement direct du service.",
-        servicesTitle: "Services de design",
-        service1Title: "Design de landing page",
-        service1Text: "Pages à forte conversion pour produits, services et campagnes de génération de leads.",
-        service2Title: "Identité visuelle professionnelle",
-        service2Text: "Direction logo, couleurs, typographies et mini guide de marque.",
-        service3Title: "Packs marketing design",
-        service3Text: "Posts sociaux, stories, couvertures, visuels pub et bannières prêts à publier.",
-        templatesTitle: "Collection de modèles professionnels",
-        templatesLead: "Choisissez parmi plusieurs modèles prêts à adapter selon votre niche.",
-        tempTag1: "E-commerce",
-        tempTitle1: "Landing de lancement produit",
-        tempDesc1: "Structure claire orientée produit avec blocs de confiance et CTA fort.",
-        tempTag2: "Agence",
-        tempTitle2: "Modèle de réservation service",
-        tempDesc2: "Mise en page professionnelle pour agences, consultants et freelances.",
-        tempTag3: "SaaS",
-        tempTitle3: "Page de démonstration logiciel",
-        tempDesc3: "Sections centrées fonctionnalités, essai, tarifs et onboarding.",
-        tempTag4: "Créateur",
-        tempTitle4: "Funnel personal branding",
-        tempDesc4: "Captez des leads, présentez vos offres et développez votre audience.",
-        tempTag5: "Restaurant",
-        tempTitle5: "Page menu & livraison",
-        tempDesc5: "Présentation moderne avec actions commande et réservation.",
-        tempTag6: "Événement",
-        tempTitle6: "Landing d'inscription",
-        tempDesc6: "Timeline, intervenants et CTA d'inscription en un clic.",
-        pricingTitle: "Packs abordables",
-        pricingLead: "Cliquez sur votre pack, payez via PayPal et accédez directement au démarrage du service.",
-        basicTitle: "Pack Starter",
-        basicDesc: "Parfait pour un lancement simple.",
-        basicF1: "1 design de landing page",
-        basicF2: "3 blocs de modèles modifiables",
-        basicF3: "1 langue + 2 révisions",
-        proTitle: "Pack Business",
-        proDesc: "Idéal pour les marques actives et campagnes.",
-        proF1: "2 variantes de landing page",
-        proF2: "8 sections premium de modèles",
-        proF3: "2 langues + optimisation identité",
-        premiumTitle: "Pack Identité Premium",
-        premiumDesc: "Système visuel complet pour forte croissance.",
-        premiumF1: "3 landing pages + style funnel complet",
-        premiumF2: "Modèles complets EN + AR + FR",
-        premiumF3: "Mini guide de marque + fichiers source",
-        directStart: "Après paiement, vous êtes redirigé directement pour démarrer votre demande.",
-        paypalBtn: "Payer et démarrer",
-        startTitle: "Démarrez votre service immédiatement",
-        startText: "Après paiement, envoyez votre brief par email et nous lançons la production rapidement.",
-        startBtn: "Envoyer le brief",
-        contactText: "Contactez-nous pour démarrer votre projet :"
+        brand: "StoreForge AR", navServices: "Services", navTemplates: "Modèles", navPricing: "Tarifs", navContact: "Contact",
+        badge: "Plateforme de création de boutiques e-commerce",
+        heroTitle: "Créez votre boutique en ligne et commencez à vendre rapidement",
+        heroLead: "Interface pro, packs clairs et paiement PayPal direct pour démarrer sans complexité.",
+        heroCta: "Choisir un pack et payer",
+        whyTitle: "Pourquoi ce service ?", why1: "Lancement rapide d'une boutique complète.", why2: "Design clair orienté conversion.", why3: "Support arabe/français/anglais.", why4: "Paiement sécurisé via PayPal.",
+        servicesTitle: "Services e-commerce", s1t: "Boutique prête à vendre", s1d: "Pages produit, panier et politique d'expédition soignées.", s2t: "Identité visuelle", s2d: "Couleurs, typo et style adaptés à votre niche.", s3t: "Optimisation conversion", s3d: "Parcours client optimisé de la visite à l'achat.",
+        templatesTitle: "Modèles professionnels", t1t: "Template boutique général", t1d: "Pour la majorité des produits avec UI propre.", t2t: "Template mode", t2d: "Mise en valeur visuelle et fiches produit efficaces.", t3t: "Template digital", t3d: "Idéal pour cours, ebooks et services numériques.",
+        pricingTitle: "Packs avec PayPal actif", pricingLead: "Choisissez votre pack puis passez au paiement PayPal immédiatement.",
+        p1t: "Starter", p1f1: "Boutique de base + produits", p1f2: "2 retouches", p1f3: "Livraison rapide",
+        p2t: "Business", p2f1: "Boutique complète + landing", p2f2: "2 langues", p2f3: "UX mobile optimisée",
+        p3t: "Premium", p3f1: "Boutique complète + 3 pages marketing", p3f2: "3 langues", p3f3: "Support post-lancement",
+        payBtn: "Payer avec PayPal",
+        contactTitle: "Contact direct après paiement", contactText: "Envoyez-moi un email pour démarrer immédiatement votre boutique :",
+        footer: "StoreForge AR — création de boutiques e-commerce avec paiement PayPal direct."
       }
     };
 
-    const htmlEl = document.documentElement;
-    const langButtons = document.querySelectorAll(".lang-btn");
+    const html = document.documentElement;
+    const langBtn = document.getElementById("langBtn");
+    let current = "ar";
 
     function setLanguage(lang) {
       const dict = translations[lang];
-      if (!dict) return;
-
-      htmlEl.lang = lang;
-      htmlEl.dir = lang === "ar" ? "rtl" : "ltr";
-
+      html.lang = lang;
+      html.dir = lang === "ar" ? "rtl" : "ltr";
       document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        if (dict[key]) {
-          el.textContent = dict[key];
-        }
+        const key = el.dataset.i18n;
+        if (dict[key]) el.textContent = dict[key];
       });
-
-      langButtons.forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.lang === lang);
-      });
+      langBtn.textContent = lang === "ar" ? "FR" : "AR";
+      current = lang;
     }
 
-    langButtons.forEach((btn) => {
-      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
-    });
-
-    setLanguage("en");
+    langBtn.addEventListener("click", () => setLanguage(current === "ar" ? "fr" : "ar"));
+    setLanguage("ar");
   </script>
 </body>
 </html>
