@@ -13,10 +13,17 @@ export async function POST(req: Request) {
   capture.requestBody({});
 
   const response = await paypalClient.execute(capture);
-  if (response.result.status !== 'COMPLETED') return NextResponse.json({ error: 'Payment not completed' }, { status: 400 });
+  if (response.result.status !== 'COMPLETED') {
+    return NextResponse.json({ error: 'Payment not completed' }, { status: 400 });
+  }
 
-  const { data: product } = await supabase.from('products').select('seller_id').eq('id', productId).single();
-  await supabase.from('orders').insert({
+  const { data: product } = await supabase
+    .from('products')
+    .select('seller_id,sales_count')
+    .eq('id', productId)
+    .single();
+
+  const insert = await supabase.from('orders').insert({
     product_id: productId,
     buyer_id: auth.user.id,
     seller_id: product?.seller_id,
@@ -24,6 +31,18 @@ export async function POST(req: Request) {
     payment_method: 'paypal',
     paypal_order_id: orderId
   });
+
+  const isDuplicate = Boolean(insert.error?.message?.toLowerCase().includes('duplicate'));
+  if (insert.error && !isDuplicate) {
+    return NextResponse.json({ error: insert.error.message }, { status: 400 });
+  }
+
+  if (!isDuplicate) {
+    await supabase
+      .from('products')
+      .update({ sales_count: (product?.sales_count ?? 0) + 1 })
+      .eq('id', productId);
+  }
 
   return NextResponse.json({ message: 'Payment successful. You can now download your file.' });
 }

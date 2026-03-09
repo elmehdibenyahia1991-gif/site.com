@@ -1,17 +1,25 @@
 'use client';
 
 import { useState } from 'react';
+import { useParams, useSearchParams } from 'next/navigation';
 
-export default function CheckoutPage({ params }: { params: { id: string } }) {
-  const [status, setStatus] = useState('');
+export default function CheckoutPage() {
+  const params = useParams<{ id: string }>();
+  const searchParams = useSearchParams();
+  const [status, setStatus] = useState(searchParams.get('cancelled') ? 'Payment cancelled.' : '');
 
   async function buy() {
-    const create = await fetch('/api/paypal/create-order', { method: 'POST', body: JSON.stringify({ productId: params.id }) });
-    const { id, error } = await create.json();
-    if (error) return setStatus(error);
-    const capture = await fetch('/api/paypal/capture-order', { method: 'POST', body: JSON.stringify({ orderId: id, productId: params.id }) });
-    const payload = await capture.json();
-    setStatus(payload.message || payload.error);
+    if (!params?.id) return;
+    setStatus('Creating PayPal order...');
+    const create = await fetch('/api/paypal/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId: params.id })
+    });
+
+    const payload = await create.json();
+    if (!create.ok || payload.error) return setStatus(payload.error || 'Unable to start checkout');
+    window.location.href = payload.approveUrl;
   }
 
   return (

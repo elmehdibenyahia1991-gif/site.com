@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { createServerSupabase } from '@/lib/supabase-server';
+import { ReviewForm } from '@/components/review-form';
 
 export default async function ProductPage({ params }: { params: { id: string } }) {
   const supabase = createServerSupabase();
@@ -17,8 +18,11 @@ export default async function ProductPage({ params }: { params: { id: string } }
         <h1 className="text-3xl font-bold">{product.title}</h1>
         <p className="mt-2 text-slate-600">{product.description}</p>
         <p className="mt-4 text-2xl font-bold text-brand">${product.price.toFixed(2)}</p>
+        {product.bundle_price ? <p className="mt-1 text-sm text-emerald-700">Bundle offer: ${product.bundle_price.toFixed(2)} {product.bundle_label ? `(${product.bundle_label})` : ''}</p> : null}
         <p className="mt-2 text-sm">Average rating: {avg.toFixed(1)} ⭐ ({reviews?.length ?? 0} reviews)</p>
         <Link href={`/checkout/${product.id}`} className="mt-5 inline-block rounded bg-brand px-4 py-2 text-white">Buy now</Link>
+
+        <ReviewForm productId={product.id} />
 
         <div className="mt-8 space-y-3">
           <h2 className="text-xl font-semibold">Reviews</h2>
