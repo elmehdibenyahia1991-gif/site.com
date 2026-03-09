@@ -1,11 +1,11 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import { createClient } from '@/lib/supabase-client';
+import { createClientSupabase } from '@/lib/supabase-client';
 import { useRouter } from 'next/navigation';
 
 export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
-  const supabase = createClient();
+  const supabase = createClientSupabase();
   const router = useRouter();
   const [error, setError] = useState('');
 

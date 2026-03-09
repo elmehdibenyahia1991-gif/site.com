@@ -19,6 +19,8 @@ create table if not exists public.products (
   cover_image text,
   seller_id uuid not null references public.users(id) on delete cascade,
   sales_count int not null default 0,
+  bundle_price numeric(10,2),
+  bundle_label text,
   created_at timestamptz not null default now()
 );
 

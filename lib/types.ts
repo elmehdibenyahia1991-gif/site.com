@@ -11,6 +11,8 @@ export interface Product {
   seller_id: string;
   created_at: string;
   sales_count?: number;
+  bundle_price?: number | null;
+  bundle_label?: string | null;
 }
 
 export interface Review {

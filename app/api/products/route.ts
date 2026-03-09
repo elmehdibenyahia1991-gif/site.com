@@ -15,8 +15,9 @@ export async function POST(req: Request) {
 
   const formData = await req.formData();
   const file = formData.get('file') as File;
-  const fileName = `${auth.user.id}/${Date.now()}-${file.name}`;
+  if (!file) return NextResponse.json({ error: 'File is required' }, { status: 400 });
 
+  const fileName = `${auth.user.id}/${Date.now()}-${file.name}`;
   const upload = await supabase.storage.from('products').upload(fileName, file, { upsert: false });
   if (upload.error) return NextResponse.json({ error: upload.error.message }, { status: 400 });
 
@@ -27,7 +28,9 @@ export async function POST(req: Request) {
     category: String(formData.get('category')),
     file_url: fileName,
     cover_image: String(formData.get('coverImage') || ''),
-    seller_id: auth.user.id
+    seller_id: auth.user.id,
+    bundle_price: formData.get('bundlePrice') ? Number(formData.get('bundlePrice')) : null,
+    bundle_label: String(formData.get('bundleLabel') || '') || null
   };
 
   const { error } = await supabase.from('products').insert(payload);
