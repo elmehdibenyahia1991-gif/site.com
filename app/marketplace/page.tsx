@@ -22,6 +22,11 @@ export default async function MarketplacePage({ searchParams }: { searchParams: 
         <button className="rounded bg-brand px-4 py-2 text-white">Filter</button>
       </form>
 
+      <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900">
+        <p className="font-semibold">Affordable pricing suggestions</p>
+        <p>Prompts $3 · Templates $5 · eBooks $7 · Tools $10 · Offer bundles for extra savings.</p>
+      </div>
+
       <div>
         <h2 className="mb-3 text-xl font-semibold">Best Selling</h2>
         <div className="grid gap-4 md:grid-cols-4">{best.map((p) => <ProductCard key={p.id} product={p} />)}</div>
