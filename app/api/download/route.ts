@@ -18,7 +18,10 @@ export async function POST(req: Request) {
   if (!order) return NextResponse.json({ error: 'Purchase required' }, { status: 403 });
 
   const { data: product } = await supabase.from('products').select('file_url').eq('id', productId).single();
-  const { data } = await supabase.storage.from('products').createSignedUrl(product.file_url, 60);
+  if (!product?.file_url) return NextResponse.json({ error: 'File not found' }, { status: 404 });
+
+  const { data, error } = await supabase.storage.from('products').createSignedUrl(product.file_url, 60);
+  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
 
   return NextResponse.json({ url: data?.signedUrl });
 }

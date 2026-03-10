@@ -1,31 +1,26 @@
 import { NextResponse } from 'next/server';
-import paypal from '@paypal/checkout-server-sdk';
-import { paypalClient } from '@/lib/paypal';
-import { supabaseAdmin } from '@/lib/supabase-admin';
+import { createSupabaseAdmin } from '@/lib/supabase-admin';
+import { createPayPalOrder } from '@/lib/paypal';
 
 export async function POST(req: Request) {
-  const { productId } = await req.json();
-  const { data: product } = await supabaseAdmin.from('products').select('id,price,title').eq('id', productId).single();
-  if (!product) return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+  try {
+    const { productId } = await req.json();
+    const supabaseAdmin = createSupabaseAdmin();
+    const { data: product } = await supabaseAdmin.from('products').select('id,price,title').eq('id', productId).single();
+    if (!product) return NextResponse.json({ error: 'Product not found' }, { status: 404 });
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const request = new paypal.orders.OrdersCreateRequest();
-  request.prefer('return=representation');
-  request.requestBody({
-    intent: 'CAPTURE',
-    purchase_units: [{
-      reference_id: product.id,
-      description: product.title,
-      amount: { currency_code: 'USD', value: product.price.toFixed(2) }
-    }],
-    application_context: {
-      return_url: `${siteUrl}/checkout/${product.id}/success`,
-      cancel_url: `${siteUrl}/checkout/${product.id}?cancelled=true`,
-      user_action: 'PAY_NOW'
-    }
-  });
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const response = await createPayPalOrder({
+      productId: product.id,
+      title: product.title,
+      price: Number(product.price),
+      returnUrl: `${siteUrl}/checkout/${product.id}/success`,
+      cancelUrl: `${siteUrl}/checkout/${product.id}?cancelled=true`
+    });
 
-  const response = await paypalClient.execute(request);
-  const approve = response.result.links?.find((link: { rel: string }) => link.rel === 'approve');
-  return NextResponse.json({ id: response.result.id, approveUrl: approve?.href });
+    const approve = response.links?.find((link: { rel: string; href: string }) => link.rel === 'approve');
+    return NextResponse.json({ id: response.id, approveUrl: approve?.href });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || 'Unable to create order' }, { status: 500 });
+  }
 }
