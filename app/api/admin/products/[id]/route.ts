@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server';
 import { createServerSupabase } from '@/lib/supabase-server';
-import { supabaseAdmin } from '@/lib/supabase-admin';
+import { createSupabaseAdmin } from '@/lib/supabase-admin';
 
 export async function DELETE(_: Request, { params }: { params: { id: string } }) {
   const supabase = createServerSupabase();
   const { data: auth } = await supabase.auth.getUser();
   if (!auth.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+  const supabaseAdmin = createSupabaseAdmin();
   const { data: profile } = await supabaseAdmin.from('users').select('role').eq('id', auth.user.id).single();
   if (profile?.role !== 'admin') return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
 
